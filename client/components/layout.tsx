@@ -1,16 +1,13 @@
-import Meta from "./meta";
 import Header from "./header";
 import Footer from "./footer";
 
 interface LayoutProps {
     children: any;
-    title?: string;
 }
 
-const Layout = ({children, title } : LayoutProps) => {
+const Layout = ({children } : LayoutProps) => {
     return (
         <>
-            <Meta title={title}/>
             <Header/>
             <div>
                 {children}

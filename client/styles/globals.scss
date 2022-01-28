@@ -1,0 +1,84 @@
+@import "light.theme";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+#__next {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#Header {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-areas: "";
+  padding: 10px;
+  border-bottom: 1px solid $border;
+  #HeaderTitle {
+    font-size: 24px;
+    color: $font-color;
+    text-decoration: none;
+    &:hover{
+      color: $font-color-light;
+    }
+  }
+  #HeaderLinks {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    .HeaderLink {
+      font-size: 20px;
+      color: $font-color;
+      text-decoration: none;
+      &:hover{
+        color: $font-color-light;
+      }
+    }
+  }
+  #HeaderTheme {
+    display: flex;
+    justify-content: center;
+    #HeaderThemeSection {
+      display: flex;
+      border: 1px solid $border;
+      #HeaderThemeActiveBlock {
+        background-color: $background;
+        color: $font-color;
+        padding: 5px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      #HeaderThemeNotActiveBlock {
+        background-color: $font-color;
+        color: $background;
+        padding: 5px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+    }
+
+  }
+}
+
+#Footer {
+  border-top: 1px solid $border;
+  margin-top: auto;
+  margin-bottom: 0;
+  padding: 10px;
+  background-color: $background;
+  flex: -1 0 auto;
+  a {
+    color: $font-color;
+    text-decoration: none;
+    &:hover{
+      color: $font-color-light;
+      text-decoration: underline;
+    }
+  }
+}
