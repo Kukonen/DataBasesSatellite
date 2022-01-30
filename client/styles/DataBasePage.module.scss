@@ -1,0 +1,60 @@
+@import "light.theme";
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.headline {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 34px;
+  color: $font-color-light;
+}
+
+.link {
+  margin-top: 20px;
+  text-align: center;
+  a {
+    text-decoration: none;
+    font-size: 28px;
+    color: $font-color;
+    &:hover {
+      color: $font-color-light;
+    }
+  }
+}
+
+.mongodb {
+  a:hover {
+    color: $mongodb-color;
+  }
+}
+.mysql {
+  a:hover {
+    color: $mysql-color;
+  }
+}
+.postgresql {
+  a:hover {
+    color: $postgresql-color;
+  }
+}
+
+
+.hr {
+  width: 30%;
+  border: 0;
+  height: 1px;
+  background: $font-color;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  div {
+    text-align: center;
+    width: 30%;
+    font-size: 20px;
+  }
+}

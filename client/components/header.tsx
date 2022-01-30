@@ -7,14 +7,14 @@ const Header = () => {
                 <a id="HeaderTitle">DataBasesSatellite</a>
             </Link>
             <div id="HeaderLinks">
-                <Link href="/">
-                    <a className="HeaderLink">MongoDB</a>
+                <Link href="/mongodb">
+                    <a className="HeaderLink mongodb">MongoDB</a>
                 </Link>
-                <Link href="/">
-                    <a className="HeaderLink">MySQL</a>
+                <Link href="/mysql">
+                    <a className="HeaderLink mysql">MySQL</a>
                 </Link>
-                <Link href="/">
-                    <a className="HeaderLink">PostgreSQL</a>
+                <Link href="/postgresql">
+                    <a className="HeaderLink postgresql">PostgreSQL</a>
                 </Link>
             </div>
             <div id="HeaderTheme">

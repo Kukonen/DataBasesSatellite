@@ -40,6 +40,21 @@ body {
         color: $font-color-light;
       }
     }
+    .mongodb {
+      &:hover {
+        color: $mongodb-color;
+      }
+    }
+    .mysql {
+      &:hover {
+        color: $mysql-color;
+      }
+    }
+    .postgresql {
+      &:hover {
+        color: $postgresql-color;
+      }
+    }
   }
   #HeaderTheme {
     display: flex;
