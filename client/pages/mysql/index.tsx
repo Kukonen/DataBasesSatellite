@@ -1,8 +1,8 @@
-import styles from "../styles/DataBasePage.module.scss";
+import styles from "../../styles/DataBasePage.module.scss";
 import Link from "next/link";
 import classNames from "classnames";
 
-const MySQL = () => {
+const Index = () => {
     return (
         <div className={styles.container}>
             <div className={styles.headline}>
@@ -28,4 +28,4 @@ const MySQL = () => {
     )
 }
 
-export default MySQL;
+export default Index;
