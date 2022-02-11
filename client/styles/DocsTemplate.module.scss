@@ -1,0 +1,62 @@
+@import "light.theme";
+
+@mixin NavBarLink() {
+  text-decoration: none;
+  color: $font-color;
+}
+
+.container {
+  display: flex;
+}
+
+.navbar {
+  width: 300px;
+  border-right: 1px solid $border;
+  padding: 5px;
+}
+
+.navbarSection {
+  padding: 5px;
+}
+
+.navbarTitle {
+  padding: 5px;
+  font-size: 20px;
+}
+
+.mongodb {
+  @include NavBarLink();
+  &:hover {
+    color: $mongodb-color;
+  }
+}
+
+.mysql {
+  @include NavBarLink();
+  &:hover{
+    color: $mysql-color;
+  }
+}
+
+.postgresql {
+  @include NavBarLink();
+  &:hover {
+    color: $postgresql-color;
+  }
+}
+
+
+
+.navbarItems {
+  padding: 5px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.navbarItem {
+  margin-top: 5px;
+}
+
+.content {
+  padding: 15px;
+}
