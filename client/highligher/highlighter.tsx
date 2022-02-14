@@ -11,7 +11,7 @@ class Highlighter {
 
         const keywordsGroups = [
             ["mongoose"],
-            ["findOne", "findMany"]
+            ["findOne", "findMany", "let", "var"]
         ]
 
         const stylesArray = [
@@ -19,15 +19,18 @@ class Highlighter {
             styles.codeSecondStyle
         ]
 
-        const words = code.split(" ");
+        const {words, symbols} = this.getWordsInCode(code);
 
-        const text = words.map(word => {
+        const text = words.map((word, index) => {
             const styleNumber = this.getKeyWordsGroupNumber(keywordsGroups, word);
-
+            console.log(word, styleNumber)
             if (styleNumber >= 0) {
-                return <span className={stylesArray[styleNumber]}>{word}&nbsp;</span>
+                return <span>
+                    <span className={stylesArray[styleNumber]}>{word}</span>
+                    {symbols[index + 1]}
+                </span>
             } else {
-                return <span>{word}&nbsp;</span>
+                return <span>{word}{symbols[index + 1]}</span>
             }
         })
 
@@ -44,6 +47,19 @@ class Highlighter {
 
     public static postgresql(code: string) {
 
+    }
+
+    public static getWordsInCode(code: string) {
+        const splitSymbolsWords = new RegExp("[\'\" .()]+");
+        const splitSymbols = new RegExp("[^\'\" .()]+")
+
+        const words = code.split(splitSymbolsWords);
+        const symbols = code.split(splitSymbols);
+
+        return {
+            words,
+            symbols
+        }
     }
 
     // we get number of group by giving word
