@@ -1,5 +1,12 @@
 @import "light.theme";
 
+@mixin contentBlock() {
+  margin-bottom: 15px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
 .container {
 }
 
@@ -11,13 +18,32 @@
 }
 
 .content {
-  font-size: 18px;
+
 }
 
 .contentHeadline {
-
+  @include contentBlock();
+  font-weight: 600;
+  font-size: 24px;
 }
 
 .contentText {
-  
+  @include contentBlock();
+  font-size: 18px;
+  color: $font-color-light;
 }
+
+.contentCode {
+  @include contentBlock();
+  font-size: 20px;
+  color: $code-standard-color;
+}
+
+.codeFirstStyle {
+  color: $code-first-color;
+}
+
+.codeSecondStyle {
+  color: $code-second-color;
+}
+
