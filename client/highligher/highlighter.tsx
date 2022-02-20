@@ -21,17 +21,41 @@ class Highlighter {
 
         const {words, symbols} = this.getWordsInCode(code);
 
+        let quotationMarksStatus:boolean = false;
+
         const text = words.map((word, index) => {
             const styleNumber = this.getKeyWordsGroupNumber(keywordsGroups, word);
-            console.log(word, styleNumber)
-            if (styleNumber >= 0) {
-                return <span>
-                    <span className={stylesArray[styleNumber]}>{word}</span>
-                    {symbols[index + 1]}
-                </span>
+
+            const quotationMarksCondition = symbols[index] === "\"";
+
+            let wordElement;
+            let symbolElement;
+
+            // console.log(styleNumber, word, symbols[index + 1], quotationMarksStatus)
+            if (quotationMarksStatus) {
+                wordElement = <span className={styles.codeQuotationMarksStyle}>{word}</span>
+            } else if (styleNumber >= 0) {
+                wordElement = <span className={stylesArray[styleNumber]}>{word}</span>
             } else {
-                return <span>{word}{symbols[index + 1]}</span>
+                wordElement = <span>{word}</span>
             }
+
+            if (styleNumber >= 0 && quotationMarksStatus || quotationMarksCondition) {
+                symbolElement = <span className={styles.codeQuotationMarksStyle}>{symbols[index]}</span>;
+            } else if (styleNumber >= 0) {
+                symbolElement = <span>{symbols[index]}</span>;
+            } else {
+                symbolElement = <span>{symbols[index]}</span>;
+            }
+
+            if (quotationMarksCondition) {
+                quotationMarksStatus = !quotationMarksStatus;
+            }
+
+            return <span>
+                {wordElement}
+                {symbolElement}
+            </span>
         })
 
         return (
@@ -50,11 +74,24 @@ class Highlighter {
     }
 
     public static getWordsInCode(code: string) {
-        const splitSymbolsWords = new RegExp("[\'\" .()]+");
-        const splitSymbols = new RegExp("[^\'\" .()]+")
+        const splitSymbolsWords = new RegExp("[\'\" .()]");
 
         const words = code.split(splitSymbolsWords);
-        const symbols = code.split(splitSymbols);
+        let symbols:string[] = [];
+
+        // find symbols and push they in array
+        for (let index = 0; index < code.length; ++index) {
+            if (
+                code[index] === " " ||
+                code[index] === "."  ||
+                code[index] === "\"" ||
+                code[index] === "\'" ||
+                code[index] === "(" ||
+                code[index] === ")"
+            ) {
+                symbols.push(code[index]);
+            }
+        }
 
         return {
             words,
