@@ -59,4 +59,21 @@
 
 .content {
   padding: 15px;
+  width: 100%;
+}
+
+.switchPage {
+  margin-top: 50px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10px;
+}
+
+.switchPageLinkBlock {
+  padding: 10px;
+  border: 1px solid $border;
+  &:hover {
+    background-color: $background-secondary-color;
+  }
 }
