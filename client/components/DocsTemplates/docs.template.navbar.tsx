@@ -47,6 +47,13 @@ const DocsTemplateNavbar = ({database} : DocsTemplateNavbar):ReactElement => {
 
     return (
         <div className={styles.navbar}>
+            <div className={styles.navbarSection}>
+                <div className={styles.navbarTitle}>
+                    <Link href={prefix}>
+                        <a className={linkStyle}>{database.toUpperCase()}</a>
+                    </Link>
+                </div>
+            </div>
             {NavBar}
         </div>
     );
