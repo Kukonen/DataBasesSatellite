@@ -71,7 +71,6 @@ const SwitchPage = ({ database }: SwitchPageProps):ReactElement => {
 
     let currentSectionPosition: number = -1;
 
-    console.log(sectionList)
         // find index current section
     sectionList.find((sectionListItem, index) => {
         if (sectionListItem.link === currentLocation) {
@@ -79,8 +78,6 @@ const SwitchPage = ({ database }: SwitchPageProps):ReactElement => {
         }
         return sectionListItem.link === currentLocation
     })
-
-    console.log(currentSectionPosition )
 
     if (currentSectionPosition === 0) {
         nextName = sectionList[currentSectionPosition + 1].title;
