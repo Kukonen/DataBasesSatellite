@@ -1,7 +1,8 @@
 import styles from '../../../../styles/DocsComponent.module.scss';
 import DocsTemplate from "../../../../components/DocsTemplates/docs.template";
-import style from "../../../../styles/DocsComponent.module.scss";
 import {getStyles, switchCrossedText} from "../../../../components/DocsTemplates/docs.template";
+import DocsTitle from "../../../../components/DocsTemplates/docs.title";
+import DocsText from "../../../../components/DocsTemplates/docs.text";
 
 // crosses out the text and vice versa
 const switchCrossedText = (event: any) => {
@@ -17,10 +18,10 @@ const index = () => {
 
     return (
         <DocsTemplate database={"mongodb"} title={"Getting start"}>
-            <div className={style.contentHeadline}>
+            <DocsTitle>
                 What we need?
-            </div>
-            <div className={style.contentText}>
+            </DocsTitle>
+            <DocsText>
                 At first you must follow at this sentences:
                 <ul>
                     <li>
@@ -39,7 +40,7 @@ const index = () => {
                         </span>
                     </li>
                 </ul>
-            </div>
+            </DocsText>
         </DocsTemplate>
     );
 }

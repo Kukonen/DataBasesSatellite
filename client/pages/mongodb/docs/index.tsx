@@ -1,17 +1,17 @@
 import DocsTemplate from "../../../components/DocsTemplates/docs.template";
-import style from "../../../styles/DocsComponent.module.scss";
-import Highlighter from "../../../highligher/highlighter";
+import DocsTitle from "../../../components/DocsTemplates/docs.title";
+import DocsText from "../../../components/DocsTemplates/docs.text";
 
 const Docs = () => {
 
     return (
         <DocsTemplate database={"mongodb"} title={"Mongo DataBase"}>
-            <div className={style.contentHeadline}>
+            <DocsTitle>
                 Mongo Database with JavaScript
-            </div>
-            <div className={style.contentText}>
+            </DocsTitle>
+            <DocsText>
                 MongoDB is a source-available cross-platform document-oriented database program. Classified as a NoSQL database program.
-            </div>
+            </DocsText>
         </DocsTemplate>
     )
 }

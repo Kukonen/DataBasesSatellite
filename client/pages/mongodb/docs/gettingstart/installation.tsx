@@ -1,52 +1,49 @@
-import styles from '../../../../styles/DocsComponent.module.scss';
 import DocsTemplate from "../../../../components/DocsTemplates/docs.template";
-import style from "../../../../styles/DocsComponent.module.scss";
-import Highlighter from "../../../../highligher/highlighter";
 import {getStyles} from "../../../../components/DocsTemplates/docs.template";
+import DocsTitle from "../../../../components/DocsTemplates/docs.title";
+import DocsText from "../../../../components/DocsTemplates/docs.text";
+import DocsCode from "../../../../components/DocsTemplates/docs.code";
 
 
 const installation = () => {
-
-    const codeTypescript = "npm install typescript";
-    const codeMongoose = "npm install mongoose";
 
     const databaseStyle = getStyles("mongodb");
 
     return (
         <DocsTemplate database={"mongodb"} title={"Installation"}>
-            <div className={style.contentHeadline}>
+            <DocsTitle>
                 Typescript
-            </div>
-            <div className={style.contentText}>
+            </DocsTitle>
+            <DocsText>
                 TypeScript is a language for application-scale JavaScript. TypeScript adds optional types to JavaScript that support tools for large-scale JavaScript applications for any browser, for any host, on any OS. TypeScript compiles to readable, standards-based JavaScript. <br/>
                 Install: <br/>
-                {
-                    Highlighter.npm(codeTypescript)
-                }
-            </div>
-            <div className={style.contentHeadline}>
+                <DocsCode mode={"npm"} >
+                    npm install typescript
+                </DocsCode>
+            </DocsText>
+            <DocsTitle>
                 Mongoose
-            </div>
-            <div className={style.contentText}>
+            </DocsTitle>
+            <DocsText>
                 Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment. Mongoose supports both promises and callbacks. <br/>
                 Install: <br/>
-                {
-                    Highlighter.npm(codeMongoose)
-                }
-            </div>
-            <div className={style.contentHeadline}>
+                <DocsCode mode={"npm"} >
+                    npm install mongoose
+                </DocsCode>
+            </DocsText>
+            <DocsTitle>
                 Mongoose
-            </div>
-            <div className={style.contentText}>
+            </DocsTitle>
+            <DocsText>
                 Define Mongoose models using TypeScript classes <br/>
                 Install: <a className={databaseStyle} href="https://github.com/typegoose/typegoose">Typegoose</a>
-            </div>
-            <div className={style.contentHeadline}>
+            </DocsText>
+            <DocsTitle>
                 That we will do
-            </div>
-            <div className={style.contentText}>
+            </DocsTitle>
+            <DocsText>
                 Next, we will use mongoose with typescript
-            </div>
+            </DocsText>
         </DocsTemplate>
     );
 }
