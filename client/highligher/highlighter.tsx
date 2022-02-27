@@ -7,6 +7,63 @@ class Highlighter {
 
     // keyword groups length must be same with style's array
 
+    public static npm(code: string) {
+        const keywordsGroups = [
+            ["npm"],
+            ["install"]
+        ]
+
+        const stylesArray = [
+            styles.codeFirstStyle,
+            styles.codeSecondStyle
+        ]
+
+        const {words, symbols} = this.getWordsInCode(code);
+
+        let quotationMarksStatus:boolean = false;
+
+        const text = words.map((word, index) => {
+            const styleNumber = this.getKeyWordsGroupNumber(keywordsGroups, word);
+
+            const quotationMarksCondition = symbols[index] === "\"";
+
+            let wordElement;
+            let symbolElement;
+
+            // console.log(styleNumber, word, symbols[index + 1], quotationMarksStatus)
+            if (quotationMarksStatus) {
+                wordElement = <span className={styles.codeQuotationMarksStyle}>{word}</span>
+            } else if (styleNumber >= 0) {
+                wordElement = <span className={stylesArray[styleNumber]}>{word}</span>
+            } else {
+                wordElement = <span>{word}</span>
+            }
+
+            if (styleNumber >= 0 && quotationMarksStatus || quotationMarksCondition) {
+                symbolElement = <span className={styles.codeQuotationMarksStyle}>{symbols[index]}</span>;
+            } else if (styleNumber >= 0) {
+                symbolElement = <span>{symbols[index]}</span>;
+            } else {
+                symbolElement = <span>{symbols[index]}</span>;
+            }
+
+            if (quotationMarksCondition) {
+                quotationMarksStatus = !quotationMarksStatus;
+            }
+
+            return <span>
+                {wordElement}
+                {symbolElement}
+            </span>
+        })
+
+        return (
+            <div className={styles.contentCode}>
+                {text}
+            </div>
+        )
+    }
+
     public static mongodb(code: string) {
 
         const keywordsGroups = [
