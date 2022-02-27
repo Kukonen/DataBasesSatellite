@@ -1,4 +1,5 @@
 import styles from "../styles/DocsComponent.module.scss";
+import {ReactElement} from "react";
 
 class Highlighter {
     // separating keywords for different colors highlighting them
@@ -7,7 +8,7 @@ class Highlighter {
 
     // keyword groups length must be same with style's array
 
-    public static npm(code: string) {
+    public static npm(code: string) : ReactElement {
         const keywordsGroups = [
             ["npm"],
             ["install"]
@@ -64,7 +65,7 @@ class Highlighter {
         )
     }
 
-    public static mongodb(code: string) {
+    public static mongodb(code: string) : ReactElement {
 
         const keywordsGroups = [
             ["mongoose"],
@@ -122,12 +123,12 @@ class Highlighter {
         )
     }
 
-    public static mysql(code: string) {
-
+    public static mysql(code: string) : ReactElement {
+        return <div></div>
     }
 
-    public static postgresql(code: string) {
-
+    public static postgresql(code: string) : ReactElement {
+        return <div></div>
     }
 
     public static getWordsInCode(code: string) {
