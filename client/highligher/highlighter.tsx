@@ -21,42 +21,7 @@ class Highlighter {
 
         const {words, symbols} = this.getWordsInCode(code);
 
-        let quotationMarksStatus:boolean = false;
-
-        const text = words.map((word, index) => {
-            const styleNumber = this.getKeyWordsGroupNumber(keywordsGroups, word);
-
-            const quotationMarksCondition = symbols[index] === "\"";
-
-            let wordElement;
-            let symbolElement;
-
-            // console.log(styleNumber, word, symbols[index + 1], quotationMarksStatus)
-            if (quotationMarksStatus) {
-                wordElement = <span className={styles.codeQuotationMarksStyle}>{word}</span>
-            } else if (styleNumber >= 0) {
-                wordElement = <span className={stylesArray[styleNumber]}>{word}</span>
-            } else {
-                wordElement = <span>{word}</span>
-            }
-
-            if (styleNumber >= 0 && quotationMarksStatus || quotationMarksCondition) {
-                symbolElement = <span className={styles.codeQuotationMarksStyle}>{symbols[index]}</span>;
-            } else if (styleNumber >= 0) {
-                symbolElement = <span>{symbols[index]}</span>;
-            } else {
-                symbolElement = <span>{symbols[index]}</span>;
-            }
-
-            if (quotationMarksCondition) {
-                quotationMarksStatus = !quotationMarksStatus;
-            }
-
-            return <span>
-                {wordElement}
-                {symbolElement}
-            </span>
-        })
+        const text = this.createHighlightElement(words, symbols, keywordsGroups, stylesArray)
 
         return (
             <div className={styles.contentCode}>
@@ -77,44 +42,21 @@ class Highlighter {
             styles.codeSecondStyle
         ]
 
-        const {words, symbols} = this.getWordsInCode(code);
+        const codeForLines = code.split("\n");
 
-        let quotationMarksStatus:boolean = false;
+        let text:ReactElement[] | undefined = [];
 
-        const text = words.map((word, index) => {
-            const styleNumber = this.getKeyWordsGroupNumber(keywordsGroups, word);
+        for (let codeLineIndex = 0; codeLineIndex < codeForLines.length; ++codeLineIndex) {
 
-            const quotationMarksCondition = symbols[index] === "\"";
+            const {words, symbols} = this.getWordsInCode(codeForLines[codeLineIndex]);
 
-            let wordElement;
-            let symbolElement;
+            const highlightingCode = this.createHighlightElement(words, symbols, keywordsGroups, stylesArray) as ReactElement;
 
-            // console.log(styleNumber, word, symbols[index + 1], quotationMarksStatus)
-            if (quotationMarksStatus) {
-                wordElement = <span className={styles.codeQuotationMarksStyle}>{word}</span>
-            } else if (styleNumber >= 0) {
-                wordElement = <span className={stylesArray[styleNumber]}>{word}</span>
-            } else {
-                wordElement = <span>{word}</span>
+            if (highlightingCode !== undefined) {
+                text.push(highlightingCode)
+                text.push(<br />)
             }
-
-            if (styleNumber >= 0 && quotationMarksStatus || quotationMarksCondition) {
-                symbolElement = <span className={styles.codeQuotationMarksStyle}>{symbols[index]}</span>;
-            } else if (styleNumber >= 0) {
-                symbolElement = <span>{symbols[index]}</span>;
-            } else {
-                symbolElement = <span>{symbols[index]}</span>;
-            }
-
-            if (quotationMarksCondition) {
-                quotationMarksStatus = !quotationMarksStatus;
-            }
-
-            return <span>
-                {wordElement}
-                {symbolElement}
-            </span>
-        })
+        }
 
         return (
             <div className={styles.contentCode}>
@@ -132,7 +74,7 @@ class Highlighter {
     }
 
     public static getWordsInCode(code: string) {
-        const splitSymbolsWords = new RegExp("[\'\" .()]");
+        const splitSymbolsWords = new RegExp("[\'\" .()    ]");
 
         const words = code.split(splitSymbolsWords);
         let symbols:string[] = [];
@@ -145,7 +87,8 @@ class Highlighter {
                 code[index] === "\"" ||
                 code[index] === "\'" ||
                 code[index] === "(" ||
-                code[index] === ")"
+                code[index] === ")" ||
+                code[index] === "   "
             ) {
                 symbols.push(code[index]);
             }
@@ -167,6 +110,47 @@ class Highlighter {
             }
         }
         return -1;
+    }
+
+    public static createHighlightElement(words: string[], symbols: string[], keywordsGroups: string[][], stylesArray: string[]) : ReactElement | ReactElement[] {
+
+        let quotationMarksStatus:boolean = false;
+
+        const text = words.map((word, index) => {
+            const styleNumber = this.getKeyWordsGroupNumber(keywordsGroups, word);
+
+            const quotationMarksCondition = symbols[index] === "\"";
+
+            let wordElement;
+            let symbolElement;
+
+            if (quotationMarksStatus) {
+                wordElement = <span className={styles.codeQuotationMarksStyle}>{word}</span>
+            } else if (styleNumber >= 0) {
+                wordElement = <span className={stylesArray[styleNumber]}>{word}</span>
+            } else {
+                wordElement = <span>{word}</span>
+            }
+
+            if (styleNumber >= 0 && quotationMarksStatus || quotationMarksCondition) {
+                symbolElement = <span className={styles.codeQuotationMarksStyle}>{symbols[index]}</span>;
+            } else if (styleNumber >= 0) {
+                symbolElement = <span>{symbols[index]}</span>;
+            } else {
+                symbolElement = <span>{symbols[index]}</span>;
+            }
+
+            if (quotationMarksCondition) {
+                quotationMarksStatus = !quotationMarksStatus;
+            }
+
+            return <span>
+                {wordElement}
+                {symbolElement}
+            </span>
+        })
+
+        return text;
     }
 }
 
