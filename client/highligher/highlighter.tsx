@@ -33,13 +33,15 @@ class Highlighter {
     public static mongodb(code: string) : ReactElement {
 
         const keywordsGroups = [
-            ["mongoose"],
-            ["findOne", "findMany", "let", "var"]
+            ["mongoose", "module"],
+            ["findOne", "findMany", "let", "var", "const", "model", "new", "exports", "type", "required", "true", "false", "require"],
+            ["Schema", "Number", "Array", "String"]
         ]
 
         const stylesArray = [
             styles.codeFirstStyle,
-            styles.codeSecondStyle
+            styles.codeSecondStyle,
+            styles.codeThirdStyle
         ]
 
         const text = this.createHighlightElementIncludesAllLines(code, keywordsGroups, stylesArray);
@@ -60,7 +62,7 @@ class Highlighter {
     }
 
     public static getWordsInCode(code: string) {
-        const splitSymbolsWords = new RegExp("[\'\" .()]");
+        const splitSymbolsWords = new RegExp("[\'\" .(),;]");
 
         const words = code.split(splitSymbolsWords);
         let symbols:string[] = [];
@@ -73,7 +75,9 @@ class Highlighter {
                 code[index] === "\"" ||
                 code[index] === "\'" ||
                 code[index] === "(" ||
-                code[index] === ")"
+                code[index] === ")" ||
+                code[index] === "," ||
+                code[index] === ";"
             ) {
                 symbols.push(code[index]);
             }
@@ -104,7 +108,7 @@ class Highlighter {
         const text = words.map((word, index) => {
             const styleNumber = this.getKeyWordsGroupNumber(keywordsGroups, word);
 
-            const quotationMarksCondition = symbols[index] === "\"";
+            const quotationMarksCondition = symbols[index] === "\"" || symbols[index] === "\'";
 
             let wordElement;
             let symbolElement;
@@ -156,8 +160,12 @@ class Highlighter {
             const highlightingCode = this.createHighlightElement(words, symbols, keywordsGroups, stylesArray) as ReactElement;
 
             if (highlightingCode !== undefined) {
-                text.push(highlightingCode)
-                text.push(<br />)
+                const element =
+                    <div className={styles.codeLine}>
+                        <div className={styles.codeLineNumber}>{codeLineIndex + 1}</div>
+                        {highlightingCode}
+                    </div>
+                text.push(element)
             }
         }
 
