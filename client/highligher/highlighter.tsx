@@ -42,21 +42,7 @@ class Highlighter {
             styles.codeSecondStyle
         ]
 
-        const codeForLines = code.split("\n");
-
-        let text:ReactElement[] | undefined = [];
-
-        for (let codeLineIndex = 0; codeLineIndex < codeForLines.length; ++codeLineIndex) {
-
-            const {words, symbols} = this.getWordsInCode(codeForLines[codeLineIndex]);
-
-            const highlightingCode = this.createHighlightElement(words, symbols, keywordsGroups, stylesArray) as ReactElement;
-
-            if (highlightingCode !== undefined) {
-                text.push(highlightingCode)
-                text.push(<br />)
-            }
-        }
+        const text = this.createHighlightElementIncludesAllLines(code, keywordsGroups, stylesArray);
 
         return (
             <div className={styles.contentCode}>
@@ -74,7 +60,7 @@ class Highlighter {
     }
 
     public static getWordsInCode(code: string) {
-        const splitSymbolsWords = new RegExp("[\'\" .()    ]");
+        const splitSymbolsWords = new RegExp("[\'\" .()]");
 
         const words = code.split(splitSymbolsWords);
         let symbols:string[] = [];
@@ -87,8 +73,7 @@ class Highlighter {
                 code[index] === "\"" ||
                 code[index] === "\'" ||
                 code[index] === "(" ||
-                code[index] === ")" ||
-                code[index] === "   "
+                code[index] === ")"
             ) {
                 symbols.push(code[index]);
             }
@@ -144,11 +129,37 @@ class Highlighter {
                 quotationMarksStatus = !quotationMarksStatus;
             }
 
+            if (symbols[index] === " ") {
+                return <span>
+                    {wordElement}
+                    &nbsp;
+                </span>
+            }
             return <span>
                 {wordElement}
                 {symbolElement}
             </span>
         })
+
+        return text;
+    }
+
+    public static createHighlightElementIncludesAllLines(code: string, keywordsGroups: string[][], stylesArray: string[]) {
+        const codeForLines = code.split("\n");
+
+        let text:ReactElement[] | undefined = [];
+
+        for (let codeLineIndex = 0; codeLineIndex < codeForLines.length; ++codeLineIndex) {
+
+            const {words, symbols} = this.getWordsInCode(codeForLines[codeLineIndex]);
+
+            const highlightingCode = this.createHighlightElement(words, symbols, keywordsGroups, stylesArray) as ReactElement;
+
+            if (highlightingCode !== undefined) {
+                text.push(highlightingCode)
+                text.push(<br />)
+            }
+        }
 
         return text;
     }
