@@ -33,8 +33,8 @@ class Highlighter {
     public static mongodb(code: string) : ReactElement {
 
         const keywordsGroups = [
-            ["mongoose", "module"],
-            ["findOne", "findMany", "let", "var", "const", "model", "new", "exports", "type", "required", "true", "false", "require"],
+            ["mongoose", "module", "required", "type"],
+            ["findOne", "findMany", "let", "var", "const", "model", "new", "exports", "true", "false", "require"],
             ["Schema", "Number", "Array", "String"]
         ]
 
@@ -44,11 +44,11 @@ class Highlighter {
             styles.codeThirdStyle
         ]
 
-        const text = this.createHighlightElementIncludesAllLines(code, keywordsGroups, stylesArray);
+        const element = this.getElement(code, keywordsGroups, stylesArray);
 
         return (
             <div className={styles.contentCode}>
-                {text}
+                {element}
             </div>
         )
     }
@@ -62,7 +62,7 @@ class Highlighter {
     }
 
     public static getWordsInCode(code: string) {
-        const splitSymbolsWords = new RegExp("[\'\" .(),;]");
+        const splitSymbolsWords = new RegExp("[\'\" .(),;:]");
 
         const words = code.split(splitSymbolsWords);
         let symbols:string[] = [];
@@ -77,7 +77,8 @@ class Highlighter {
                 code[index] === "(" ||
                 code[index] === ")" ||
                 code[index] === "," ||
-                code[index] === ";"
+                code[index] === ";" ||
+                code[index] === ":"
             ) {
                 symbols.push(code[index]);
             }
@@ -151,7 +152,7 @@ class Highlighter {
     public static createHighlightElementIncludesAllLines(code: string, keywordsGroups: string[][], stylesArray: string[]) {
         const codeForLines = code.split("\n");
 
-        let text:ReactElement[] | undefined = [];
+        let codeLines:ReactElement[] | undefined = [];
 
         for (let codeLineIndex = 0; codeLineIndex < codeForLines.length; ++codeLineIndex) {
 
@@ -165,11 +166,31 @@ class Highlighter {
                         <div className={styles.codeLineNumber}>{codeLineIndex + 1}</div>
                         {highlightingCode}
                     </div>
-                text.push(element)
+                codeLines.push(element)
             }
         }
 
-        return text;
+        return codeLines;
+    }
+
+    public static getElement(code: string, keywordsGroups: string[][], stylesArray: string[]) {
+        const codeLines = this.createHighlightElementIncludesAllLines(code, keywordsGroups, stylesArray)
+
+        // return element with copy button
+        return (
+            <div>
+                <div>
+                    {codeLines}
+                </div>
+                <div className={styles.codeCopySection}>
+                    <div className={styles.codeCopyButton} onClick={() => {
+                        navigator.clipboard.writeText(code).then();
+                    }}>
+                        Copy code
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
 
