@@ -1,6 +1,5 @@
 import styles from '../../../../styles/DocsComponent.module.scss';
-import DocsTemplate from "../../../../components/DocsTemplates/docs.template";
-import {getStyles} from "../../../../components/DocsTemplates/docs.template";
+import DocsTemplate, {getStyles} from "../../../../components/DocsTemplates/docs.template";
 import DocsTitle from "../../../../components/DocsTemplates/docs.title";
 import DocsText from "../../../../components/DocsTemplates/docs.text";
 
@@ -13,11 +12,11 @@ const switchCrossedText = (event: any) => {
     }
 }
 
-const index = () => {
-    const databaseStyle = getStyles("mongodb");
+const GettingStart = () => {
+    const databaseStyle = getStyles("mysql");
 
     return (
-        <DocsTemplate database={"mongodb"} title={"Getting start"}>
+        <DocsTemplate database={"mysql"} title={"Getting start"}>
             <DocsTitle>
                 What we need?
             </DocsTitle>
@@ -36,7 +35,7 @@ const index = () => {
                     </li>
                     <li>
                         <span onClick={event => switchCrossedText(event)}>
-                            Install <a className={databaseStyle} href="https://docs.mongodb.com/guides/server/install/">MongoDB local</a> or find virtual server
+                            Install <a className={databaseStyle} href="https://dev.mysql.com/downloads/mysql/">MySQL Workbench</a> or find virtual server
                         </span>
                     </li>
                 </ul>
@@ -45,4 +44,4 @@ const index = () => {
     );
 }
 
-export default index;
+export default GettingStart;
