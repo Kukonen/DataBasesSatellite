@@ -20,6 +20,18 @@ export const mysql: section[] = [
         link: "beginning",
         names: [
             {
+                text: "Query",
+                link: "/query"
+            },
+            {
+                text: "DataBase",
+                link: "/database"
+            },
+            {
+                text: "Tables",
+                link: "/tables"
+            },
+            {
                 text: "Operations",
                 link: "/operations"
             }
