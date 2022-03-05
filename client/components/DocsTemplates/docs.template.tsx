@@ -6,6 +6,7 @@ import SwitchPage from "./docs.switchpage";
 import {section} from "../NavBarSections/sectionsInterface";
 import {mongodb} from "../NavBarSections/mongodb";
 import {mysql} from "../NavBarSections/mysql";
+import {postgresql} from "../NavBarSections/postgresql";
 
 export type DataBasesTypes = 'mongodb' | 'postgresql' | 'mysql';
 
@@ -24,7 +25,7 @@ export const getSection = (database: DataBasesTypes):section[] => {
         return mysql
     }
     if (database === "postgresql") {
-        return mongodb
+        return postgresql
     }
 
     return [];
