@@ -77,7 +77,25 @@ class Highlighter {
     }
 
     public static postgresql(code: string) : ReactElement {
-        return <div></div>
+        const keywordsGroups = [
+            ["pg", "module", "required", "type", "CREATE", "DROP", "RENAME", "TRUNCATE", "INSERT", "UPDATE", "DELETE", "WHERE", "SELECT"],
+            ["let", "var", "const", "model", "new", "exports", "true", "false", "require", "DATABASE", "EXISTS", "TABLE", "VALUES", "SET", "FROM"],
+            ["connect", "createConnection", "query", "IF", "NOT", "TO", "AND", "OR", "Pool", "Client"]
+        ]
+
+        const stylesArray = [
+            styles.codeFirstStyle,
+            styles.codeSecondStyle,
+            styles.codeThirdStyle
+        ]
+
+        const element = this.getElement(code, keywordsGroups, stylesArray);
+
+        return (
+            <div className={styles.contentCode}>
+                {element}
+            </div>
+        )
     }
 
     public static getWordsInCode(code: string) {

@@ -7,13 +7,13 @@ const Tables = () => {
     const databaseStyle = getStyles("mysql");
 
     return (
-        <DocsTemplate database={"mysql"} title={"Tables"} >
+        <DocsTemplate database={"postgresql"} title={"Tables"} >
             <DocsTitle>
                 Create Table
             </DocsTitle>
             <DocsText>
                 To create table use:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     CREATE TABLE tableName
                     (
                         poolName_1: type_1,
@@ -27,7 +27,7 @@ const Tables = () => {
             </DocsTitle>
             <DocsText>
                 To rename table use:
-                <DocsCode mode={"mysql"}>
+                <DocsCode mode={"postgresql"}>
                     RENAME TABLE oldTableName TO newTableName
                 </DocsCode>
             </DocsText>
@@ -36,7 +36,7 @@ const Tables = () => {
             </DocsTitle>
             <DocsText>
                 To emptying the table use:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     TRUNCATE TABLE tableName
                 </DocsCode>
             </DocsText>
@@ -45,7 +45,7 @@ const Tables = () => {
             </DocsTitle>
             <DocsText>
                 TO delete table use:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     DROP TABLE tableName
                 </DocsCode>
             </DocsText>

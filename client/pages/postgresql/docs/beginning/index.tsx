@@ -5,25 +5,25 @@ import DocsCode from "../../../../components/DocsTemplates/docs.code";
 
 const Beginning = () => {
 
-    const code = "const mysql = require('mysql');\n" +
-        "\n" +
-        "const connection = mysql.createConnection({\n" +
-        "   host,\n" +
+    const importCode = "const { Client } = require('pg')";
+
+    const code = "const client = new Client({\n" +
         "   user,\n" +
+        "   host,\n" +
+        "   database,\n" +
         "   password,\n" +
-        "   database\n" +
-        "});\n" +
-        "\n" +
-        "connection.connect(callbackFunction);\n";
+        "   port\n" +
+    "}\n" +
+    "\nclient.connect()";
 
     return (
-        <DocsTemplate database={"mysql"} title={"Beginning"} >
+        <DocsTemplate database={"postgresql"} title={"Beginning"} >
             <DocsTitle>
                 Import library
             </DocsTitle>
             <DocsText>
-                <DocsCode mode={"mysql"} >
-                    const mysql = require('mysql');
+                <DocsCode mode={"postgresql"} >
+                    {importCode}
                 </DocsCode>
             </DocsText>
             <DocsTitle>
@@ -31,7 +31,7 @@ const Beginning = () => {
             </DocsTitle>
             <DocsText>
                 To connect to database, we must add this construction in index file: <br/>
-                <DocsCode mode={"mysql"}>
+                <DocsCode mode={"postgresql"}>
                     {code}
                 </DocsCode> <br/>
                 Where:
@@ -40,13 +40,8 @@ const Beginning = () => {
                     <li><b>user</b> - mysql user</li>
                     <li><b>password</b> - user password</li>
                     <li><b>database</b> - database, where you will be connect</li>
+                    <li><b>port</b> - port to connect to database</li>
                 </ul>
-            </DocsText>
-            <DocsTitle>
-                Connect method
-            </DocsTitle>
-            <DocsText>
-                Connect with your personal data, can have callback function
             </DocsText>
         </DocsTemplate>
     )

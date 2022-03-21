@@ -5,17 +5,17 @@ import DocsCode from "../../../../components/DocsTemplates/docs.code";
 
 const DataBase = () => {
     return (
-        <DocsTemplate database={"mysql"} title={"DataBase"} >
+        <DocsTemplate database={"postgresql"} title={"DataBase"} >
             <DocsTitle>
                 Create Database
             </DocsTitle>
             <DocsText>
                 To create database use:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     CREATE DATABASE databaseName;
                 </DocsCode>
                 If we want to check database availability
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     CREATE DATABASE [IF NOT EXISTS] databaseName;
                 </DocsCode>
             </DocsText>
@@ -24,11 +24,11 @@ const DataBase = () => {
             </DocsTitle>
             <DocsText>
                 If you want to delete database:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     DROP DATABASE databaseName
                 </DocsCode>
                 Same, if we want to check database availability, use:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     DROP DATABASE [IF EXISTS] databaseName
                 </DocsCode>
             </DocsText>

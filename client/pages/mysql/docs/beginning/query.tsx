@@ -10,7 +10,7 @@ const Query = () => {
             <DocsText>
                 MySQL consists of a set of commands, so in order to run these commands through javascript we need to use the query() method
                 <DocsCode mode={"mysql"} >
-                    connection.query(queryCommand, callbackFunction);
+                    client.query(queryCommand, callbackFunction);
                 </DocsCode>
                 Where:
                 <ul>

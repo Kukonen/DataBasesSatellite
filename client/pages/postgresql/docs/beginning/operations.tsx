@@ -9,13 +9,13 @@ const Operations = () => {
         "WHERE name='Alex' AND age < 18";
 
     return (
-        <DocsTemplate database={"mysql"} title={"Operations"} >
+        <DocsTemplate database={"postgresql"} title={"Operations"} >
             <DocsTitle>
                 Add New Data
             </DocsTitle>
             <DocsText>
                 To add new data use:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     INSERT tableName(column_1, column_2, column_3)
                     VALUES (value_1, value_2, value_3);
                 </DocsCode>
@@ -25,7 +25,7 @@ const Operations = () => {
             </DocsTitle>
             <DocsText>
                 To change data:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     UPDATE tableName
                     SET column_1 = value_1, column_2 = value_2
                 </DocsCode>
@@ -35,11 +35,11 @@ const Operations = () => {
             </DocsTitle>
             <DocsText>
                 To find data:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     SELECT (column_1, column_2) FROM tableName
                 </DocsCode>
                 To get all data:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     SELECT * FROM tableName
                 </DocsCode>
             </DocsText>
@@ -48,7 +48,7 @@ const Operations = () => {
             </DocsTitle>
             <DocsText>
                 To delete data:
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     DELETE FROM tableName
                     WHERE condition;
                 </DocsCode>
@@ -59,11 +59,11 @@ const Operations = () => {
                 <DocsText>
                     <b>WHERE</b> is condition to operations for filtering data <br/>
                     For example, we can find all persons with name equals Alex
-                    <DocsCode mode={"mysql"} >
+                    <DocsCode mode={"postgresql"} >
                         SELECT * FROM Person WHERE name = 'Alex'
                     </DocsCode>
                     Also, we can use <b>AND</b>, <b>OR</b>, <b>NOT</b> with <b>WHERE</b> , for example with delete operation:
-                    <DocsCode mode={"mysql"}>
+                    <DocsCode mode={"postgresql"}>
                         {filterDeleteCode}
                     </DocsCode>
                 </DocsText>

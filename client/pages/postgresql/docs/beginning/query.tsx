@@ -5,11 +5,11 @@ import DocsCode from "../../../../components/DocsTemplates/docs.code";
 
 const Query = () => {
     return (
-        <DocsTemplate database={"mysql"} title={"Query"}>
+        <DocsTemplate database={"postgresql"} title={"Query"}>
             <DocsTitle>Query</DocsTitle>
             <DocsText>
                 MySQL consists of a set of commands, so in order to run these commands through javascript we need to use the query() method
-                <DocsCode mode={"mysql"} >
+                <DocsCode mode={"postgresql"} >
                     connection.query(queryCommand, callbackFunction);
                 </DocsCode>
                 Where:
@@ -20,7 +20,6 @@ const Query = () => {
                         <ul>
                             <li><b>error</b> - error if one occurred during the query</li>
                             <li><b>results</b> - contain the results of the query</li>
-                            <li><b>fields</b> - information about the returned results fields (if any)</li>
                         </ul>
                     </li>
                 </ul>
