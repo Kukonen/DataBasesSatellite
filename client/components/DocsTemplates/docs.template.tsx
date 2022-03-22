@@ -7,8 +7,9 @@ import {section} from "../NavBarSections/sectionsInterface";
 import {mongodb} from "../NavBarSections/mongodb";
 import {mysql} from "../NavBarSections/mysql";
 import {postgresql} from "../NavBarSections/postgresql";
+import {sql} from "../NavBarSections/sql";
 
-export type DataBasesTypes = 'mongodb' | 'postgresql' | 'mysql';
+export type DataBasesTypes = 'mongodb' | 'postgresql' | 'mysql' | 'sql';
 
 interface DocsTemplateProps {
     database: DataBasesTypes;
@@ -26,6 +27,9 @@ export const getSection = (database: DataBasesTypes):section[] => {
     }
     if (database === "postgresql") {
         return postgresql
+    }
+    if (database === "sql") {
+        return sql;
     }
 
     return [];
@@ -45,6 +49,9 @@ export const getStyles = (database: DataBasesTypes) => {
     if (database === "postgresql") {
         style = styles.postgresql
     }
+    if (database === "sql") {
+        style = styles.sql
+    }
 
     return style;
 }
@@ -61,6 +68,9 @@ export const getPathPrefix = (database: DataBasesTypes):string => {
     }
     if (database === "postgresql") {
         prefix += "postgresql"
+    }
+    if (database === "sql") {
+        prefix += "sql"
     }
 
     prefix += "/docs/"

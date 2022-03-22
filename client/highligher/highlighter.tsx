@@ -2,6 +2,7 @@ import styles from "../styles/DocsComponent.module.scss";
 import {ReactElement} from "react";
 
 class Highlighter {
+
     // separating keywords for different colors highlighting them
 
     // keyword groups matched with style's array
@@ -26,6 +27,24 @@ class Highlighter {
         return (
             <div className={styles.contentCode}>
                 {text}
+            </div>
+        )
+    }
+
+    public static sql(code: string) : ReactElement {
+        const keywordsGroups = this.addStylesToDefaultSqlStyles();
+
+        const stylesArray = [
+            styles.codeFirstStyle,
+            styles.codeSecondStyle,
+            styles.codeThirdStyle
+        ]
+
+        const element = this.getElement(code, keywordsGroups, stylesArray);
+
+        return (
+            <div className={styles.contentCode}>
+                {element}
             </div>
         )
     }
@@ -55,11 +74,12 @@ class Highlighter {
 
     public static mysql(code: string) : ReactElement {
 
-        const keywordsGroups = [
-            ["mysql", "module", "required", "type", "CREATE", "DROP", "RENAME", "TRUNCATE", "INSERT", "UPDATE", "DELETE", "WHERE", "SELECT"],
-            ["let", "var", "const", "model", "new", "exports", "true", "false", "require", "DATABASE", "EXISTS", "TABLE", "VALUES", "SET", "FROM"],
-            ["connect", "createConnection", "query", "IF", "NOT", "TO", "AND", "OR"]
-        ]
+        const keywordsGroups = this.addStylesToDefaultSqlStyles([
+            ["mysql", "module", "required", "type"],
+            ["let", "var", "const", "model", "new", "exports", "true", "false", "require"],
+            ["connect", "createConnection", "query"]
+        ]);
+
 
         const stylesArray = [
             styles.codeFirstStyle,
@@ -77,11 +97,11 @@ class Highlighter {
     }
 
     public static postgresql(code: string) : ReactElement {
-        const keywordsGroups = [
-            ["pg", "module", "required", "type", "CREATE", "DROP", "RENAME", "TRUNCATE", "INSERT", "UPDATE", "DELETE", "WHERE", "SELECT"],
-            ["let", "var", "const", "model", "new", "exports", "true", "false", "require", "DATABASE", "EXISTS", "TABLE", "VALUES", "SET", "FROM"],
-            ["connect", "createConnection", "query", "IF", "NOT", "TO", "AND", "OR", "Pool", "Client"]
-        ]
+        const keywordsGroups = this.addStylesToDefaultSqlStyles([
+            ["pg", "module", "required", "type"],
+            ["let", "var", "const", "model", "new", "exports", "true", "false", "require"],
+            ["connect", "createConnection", "query", "Pool", "Client"]
+        ])
 
         const stylesArray = [
             styles.codeFirstStyle,
@@ -127,8 +147,43 @@ class Highlighter {
         }
     }
 
+    // add own styles to default sql styles
+    private static addStylesToDefaultSqlStyles(styles ?: string[][]) {
+        const sqlKeywordsGroups = [
+            ["CREATE", "DROP", "RENAME", "TRUNCATE", "INSERT", "UPDATE", "DELETE", "WHERE", "SELECT"],
+            ["DATABASE", "EXISTS", "TABLE", "VALUES", "SET", "FROM"],
+            ["IF", "NOT", "TO", "AND", "OR"]
+        ]
+
+        if (styles === null || styles === undefined) {
+            return sqlKeywordsGroups;
+        }
+
+        let newStyles: string[][];
+
+        if (styles.length >= sqlKeywordsGroups.length) {
+            newStyles = styles.map((style, index) => {
+                return style.concat(
+                    sqlKeywordsGroups[index].length > 0 ?
+                        sqlKeywordsGroups[index] :
+                        []
+                );
+            })
+        } else {
+            newStyles = sqlKeywordsGroups.map((style, index) => {
+                return style.concat(
+                    styles[index].length > 0 ?
+                        styles[index] :
+                        []
+                );
+            })
+        }
+
+        return newStyles;
+    }
+
     // we get number of group by giving word
-    public static getKeyWordsGroupNumber (keywordGroups: any, word: string) {
+    private static getKeyWordsGroupNumber (keywordGroups: any, word: string) {
         for (let keywordGroup = 0; keywordGroup < keywordGroups.length; ++keywordGroup) {
             for (let keyword = 0; keyword < keywordGroups[keywordGroup].length; ++keyword) {
                 if (keywordGroups[keywordGroup][keyword] === word) {
@@ -139,7 +194,7 @@ class Highlighter {
         return -1;
     }
 
-    public static createHighlightElement(words: string[], symbols: string[], keywordsGroups: string[][], stylesArray: string[]) : ReactElement | ReactElement[] {
+    private static createHighlightElement(words: string[], symbols: string[], keywordsGroups: string[][], stylesArray: string[]) : ReactElement | ReactElement[] {
 
         let quotationMarksStatus:boolean = false;
 
@@ -186,7 +241,7 @@ class Highlighter {
         return text;
     }
 
-    public static createHighlightElementIncludesAllLines(code: string, keywordsGroups: string[][], stylesArray: string[]) {
+    private static createHighlightElementIncludesAllLines(code: string, keywordsGroups: string[][], stylesArray: string[]) {
         const codeForLines = code.split("\n");
 
         let codeLines:ReactElement[] | undefined = [];
@@ -210,7 +265,7 @@ class Highlighter {
         return codeLines;
     }
 
-    public static getElement(code: string, keywordsGroups: string[][], stylesArray: string[]) {
+    private static getElement(code: string, keywordsGroups: string[][], stylesArray: string[]) {
         const codeLines = this.createHighlightElementIncludesAllLines(code, keywordsGroups, stylesArray)
 
         // return element with copy button

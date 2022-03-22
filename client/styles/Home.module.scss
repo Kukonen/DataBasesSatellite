@@ -67,6 +67,11 @@
         color: $postgresql-color;
     }
 }
+.sql {
+    &:hover {
+        color: $sql-color;
+    }
+}
 
 .imageBlock {
     width: 35%;

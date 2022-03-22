@@ -7,6 +7,7 @@ import classNames from "classnames";
 import MongoDbLogo from '../public/mongodb.logo.svg';
 import MYQSLLogo from '../public/mysql.logo.svg';
 import PostgreSQLLogo from '../public/postgresql.logo.svg';
+import SQLLogo from '../public/SQL.logo.svg';
 
 const Home: NextPage = () => {
 
@@ -78,6 +79,26 @@ const Home: NextPage = () => {
             </div>
             <div className={styles.imageBlock}>
                 <Image src={PostgreSQLLogo} className={styles.image}/>
+            </div>
+        </div>
+        <div className={styles.section}>
+            <div className={styles.imageBlock}>
+                <Image src={SQLLogo} className={styles.image}/>
+            </div>
+            <div className={styles.textBlock}>
+                <div className={styles.textBlockTitle}>
+                    SQL
+                </div>
+                <Link href="/sql/docs">
+                    <a
+                        className={classNames(styles.link, styles.sql)}
+                    >Docs</a>
+                </Link>
+                <Link href="/sql/generate">
+                    <a
+                        className={classNames(styles.link, styles.sql)}
+                    >Generator</a>
+                </Link>
             </div>
         </div>
     </div>

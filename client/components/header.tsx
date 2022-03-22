@@ -16,6 +16,9 @@ const Header = () => {
                 <Link href="/postgresql">
                     <a className="HeaderLink postgresql">PostgreSQL</a>
                 </Link>
+                <Link href="/sql">
+                    <a className="HeaderLink sql">SQL</a>
+                </Link>
             </div>
             <div id="HeaderTheme">
                 <div id="HeaderThemeSection">

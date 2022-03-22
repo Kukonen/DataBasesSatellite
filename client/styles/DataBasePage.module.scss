@@ -40,6 +40,11 @@
     color: $postgresql-color;
   }
 }
+.sql {
+  a:hover {
+    color: $sql-color;
+  }
+}
 
 
 .hr {

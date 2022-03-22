@@ -44,6 +44,12 @@
     color: $postgresql-color;
   }
 }
+.sql {
+  @include NavBarLink();
+  &:hover {
+    color: $sql-color;
+  }
+}
 
 
 

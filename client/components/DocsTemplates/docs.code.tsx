@@ -1,10 +1,10 @@
 import {ReactElement, ReactNode} from "react";
 import highlighter from "../../highligher/highlighter";
-
+import {DataBasesTypes} from "./docs.template";
 
 interface DocsCodeProps {
     children: ReactNode;
-    mode: "mongodb" | "mysql" | "postgresql" | "npm";
+    mode: DataBasesTypes | "npm";
 }
 
 const DocsCode = ({children, mode}: DocsCodeProps) : ReactElement => {
@@ -17,6 +17,8 @@ const DocsCode = ({children, mode}: DocsCodeProps) : ReactElement => {
             return highlighter.postgresql(children as string);
         case "npm":
             return highlighter.npm(children as string);
+        case "sql":
+            return highlighter.sql(children as string);
         default:
             return <span></span>;
     }
