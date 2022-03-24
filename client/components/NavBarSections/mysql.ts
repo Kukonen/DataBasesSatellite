@@ -24,16 +24,8 @@ export const mysql: section[] = [
                 link: "/query"
             },
             {
-                text: "DataBase",
-                link: "/database"
-            },
-            {
-                text: "Tables",
-                link: "/tables"
-            },
-            {
-                text: "Operations",
-                link: "/operations"
+                text: "Commands",
+                link: "/commands"
             }
         ]
     }
