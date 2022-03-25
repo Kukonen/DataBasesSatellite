@@ -11,12 +11,6 @@ import SQLLogo from '../public/SQL.logo.svg';
 
 const Home: NextPage = () => {
 
-  const mongoDBLinkStyle = {
-      "hover": {
-          "color": "#909"
-      }
-  }
-
   return (
     <div className={styles.container}>
 
@@ -31,7 +25,7 @@ const Home: NextPage = () => {
                     className={classNames(styles.link, styles.mongodb)}
                 >Docs</a>
             </Link>
-            <Link href="/mongodb/generate">
+            <Link href="/generator">
                 <a
                     className={classNames(styles.link, styles.mongodb)}
                 >Generator</a>
@@ -54,7 +48,7 @@ const Home: NextPage = () => {
                     className={classNames(styles.link, styles.mysql)}
                 >Docs</a>
             </Link>
-            <Link href="/mysql/generate">
+            <Link href="/generator">
                 <a
                     className={classNames(styles.link, styles.mysql)}
                 >Generator</a>
@@ -71,7 +65,7 @@ const Home: NextPage = () => {
                         className={classNames(styles.link, styles.postgresql)}
                     >Docs</a>
                 </Link>
-                <Link href="/mongodb/generate">
+                <Link href="/generator">
                     <a
                         className={classNames(styles.link, styles.postgresql)}
                     >Generator</a>
@@ -94,7 +88,7 @@ const Home: NextPage = () => {
                         className={classNames(styles.link, styles.sql)}
                     >Docs</a>
                 </Link>
-                <Link href="/sql/generate">
+                <Link href="/generator">
                     <a
                         className={classNames(styles.link, styles.sql)}
                     >Generator</a>

@@ -14,7 +14,7 @@ const Index = () => {
                 </Link>
             </div>
             <div className={classNames(styles.link, styles.sql)}>
-                <Link href={'/sql/generator'}>
+                <Link href={'/generator'}>
                     <a>Generator</a>
                 </Link>
             </div>

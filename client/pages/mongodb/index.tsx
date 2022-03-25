@@ -14,7 +14,7 @@ const Index = () => {
                 </Link>
             </div>
             <div className={classNames(styles.link, styles.mongodb)}>
-                <Link href={'/mongodb/docs'}>
+                <Link href={'/generator'}>
                     <a className={styles.mongodb}>Generator</a>
                 </Link>
             </div>

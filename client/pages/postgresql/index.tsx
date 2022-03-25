@@ -14,7 +14,7 @@ const Index = () => {
                 </Link>
             </div>
             <div className={classNames(styles.link, styles.postgresql)}>
-                <Link href={'/postgresql/docs'}>
+                <Link href={'/generator'}>
                     <a>Generator</a>
                 </Link>
             </div>
