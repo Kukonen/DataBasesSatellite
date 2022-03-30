@@ -1,5 +1,5 @@
 import {ReactSortable} from "react-sortablejs";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Command, commandType} from "../../generator/commands/CommandsInterface";
 import {DefaultCommands} from "../../generator/commands/DefaultCommnads";
 import styles from '../../styles/Generator.module.scss';
@@ -35,7 +35,26 @@ const getStyleCommandBlock = (style : commandType) => {
 const GeneratorHeader = () => {
     const [commands, setCommands] = useState<Command[]>(DefaultCommands);
     const [currentDatabase, setCurrentDatabase] = useState<DatabasesType>(Databases[0]);
+    const [databaseAccordionActive, setDatabaseAccordionActive] = useState<boolean>(false);
 
+    // then click abound switching blocks close list
+
+    const checkClickOutOfDatabaseBlocks = (event : any) => {
+        if (
+            event.target.className !== styles.GeneratorHeaderDataBaseTitle &&
+            event.target.className !== styles.GeneratorHeaderDataBaseBlock
+        ) {
+            setDatabaseAccordionActive(false);
+        }
+    }
+    useEffect(() => {
+
+        document.addEventListener('click', event => checkClickOutOfDatabaseBlocks(event));
+
+        return () => {
+            document.removeEventListener('click', checkClickOutOfDatabaseBlocks);
+        }
+    }, [])
 
     return (
         <div className={styles.GeneratorHeader}>
@@ -58,23 +77,30 @@ const GeneratorHeader = () => {
                 )}
             </ReactSortable>
             <div className={styles.GeneratorHeaderDataBaseSection}>
-                <button className={styles.GeneratorHeaderDataBaseTitle}
-                    onClick={() => {}}
-                >
-                    {currentDatabase.name}
-                </button>
-                <div style={{display: }}>
-                    {
-                        Databases.map(database => {
-                            return (
-                                <div
-                                    className={}
-                                >
-
-                                </div>
-                            )
-                        })
-                    }
+                <div className={styles.GeneratorHeaderCommandsContainer}>
+                    <div className={styles.GeneratorHeaderDataBaseTitle}
+                         onClick={() => setDatabaseAccordionActive(!databaseAccordionActive)}
+                    >
+                        {currentDatabase.name}
+                    </div>
+                    <div
+                        style={{display: databaseAccordionActive ? "block" : "none"}}
+                        className={styles.GeneratorHeaderDataBaseBlocks}
+                    >
+                        {
+                            Databases.map(database => {
+                                return (
+                                    <div
+                                        className={styles.GeneratorHeaderDataBaseBlock}
+                                        key={database.id}
+                                        onClick={() => setCurrentDatabase(database)}
+                                    >
+                                        {database.name}
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </div>
             </div>
         </div>

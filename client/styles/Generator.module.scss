@@ -1,5 +1,14 @@
 @import "light.theme";
 
+@mixin generator-header-database-block($bg-color) {
+  padding: 5px;
+  border: 1px solid $border;
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+  background-color: $bg-color;
+}
+
 .Generator {
 
 }
@@ -54,8 +63,23 @@
 .GeneratorHeaderDataBaseSection {
   width: 30%;
   padding: 5px 10px;;
+  display: flex;
+  justify-content: center;
+}
+
+.GeneratorHeaderCommandsContainer {
 }
 
 .GeneratorHeaderDataBaseTitle {
+  @include generator-header-database-block($background);
+}
 
+.GeneratorHeaderDataBaseBlocks {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.GeneratorHeaderDataBaseBlock {
+  @include generator-header-database-block(darken($background, 2%));
 }
