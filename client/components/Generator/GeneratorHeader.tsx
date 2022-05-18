@@ -5,6 +5,7 @@ import {DefaultCommands} from "../../generator/commands/DefaultCommnads";
 import styles from '../../styles/Generator.module.scss';
 import classNames from "classnames";
 import {Databases, DatabasesType} from "../../generator/databases";
+import {GeneratorContentMode} from "../../generator/generatorContentMode";
 
 const getStyleCommandBlock = (style : commandType) => {
 
@@ -36,6 +37,7 @@ const GeneratorHeader = () => {
     const [commands, setCommands] = useState<Command[]>(DefaultCommands);
     const [currentDatabase, setCurrentDatabase] = useState<DatabasesType>(Databases[0]);
     const [databaseAccordionActive, setDatabaseAccordionActive] = useState<boolean>(false);
+    const [contentMode, setContentMod] = useState<GeneratorContentMode>('commands');
 
     // then click abound switching blocks close list
 
@@ -56,8 +58,27 @@ const GeneratorHeader = () => {
         }
     }, [])
 
+    const changeContentMod = () => {
+        setContentMod(
+            contentMode === 'commands' ?
+                'schemas' :
+                'commands'
+        );
+    }
+
     return (
         <div className={styles.GeneratorHeader}>
+            <div className={styles.GeneratorHeaderDataBaseSection}>
+                <div className={styles.GeneratorHeaderDataBaseTitle}
+                     onClick={() => changeContentMod()}
+                >
+                    {
+                        contentMode === 'commands' ?
+                            "Schemas" :
+                            "Commands"
+                    }
+                </div>
+            </div>
             <ReactSortable
                 list={commands}
                 setList={setCommands}
@@ -93,7 +114,11 @@ const GeneratorHeader = () => {
                                     <div
                                         className={styles.GeneratorHeaderDataBaseBlock}
                                         key={database.id}
-                                        onClick={() => setCurrentDatabase(database)}
+                                        onClick={() => {
+                                            setDatabaseAccordionActive(false);
+                                            setCurrentDatabase(database);
+                                            
+                                        }}
                                     >
                                         {database.name}
                                     </div>
