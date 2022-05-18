@@ -1,4 +1,5 @@
 import {combineReducers} from "redux";
+import generatorContentModeReducer from './generatorContentModeReducer';
 import databaseReducer from "./databaseReducer";
 
 export interface databaseAction {
@@ -8,5 +9,6 @@ export interface databaseAction {
 
 
 export default combineReducers({
-    databaseReducer
+    databaseReducer,
+    generatorContentModeReducer
 });

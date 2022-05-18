@@ -1,11 +1,13 @@
 import {ReactSortable} from "react-sortablejs";
 import {useEffect, useState} from "react";
 import {Command, commandType} from "../../generator/commands/CommandsInterface";
-import {DefaultCommands} from "../../generator/commands/DefaultCommnads";
+import {DefaultCommands, SchemaDefaultCommands} from "../../generator/commands/Commnads";
 import styles from '../../styles/Generator.module.scss';
 import classNames from "classnames";
 import {Databases, DatabasesType} from "../../generator/databases";
 import {GeneratorContentMode} from "../../generator/generatorContentMode";
+import store from "../../store/store";
+import {setGeneratorContentMod} from "../../store/actionCreators/generatorContentModeActionCreator";
 
 const getStyleCommandBlock = (style : commandType) => {
 
@@ -59,10 +61,16 @@ const GeneratorHeader = () => {
     }, [])
 
     const changeContentMod = () => {
+        store.dispatch(setGeneratorContentMod(contentMode));
         setContentMod(
             contentMode === 'commands' ?
                 'schemas' :
                 'commands'
+        );
+        setCommands(
+            contentMode === 'commands' ?
+                SchemaDefaultCommands :
+                DefaultCommands
         );
     }
 
