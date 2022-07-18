@@ -22,6 +22,7 @@
     --code-second-color-light: #00A779;
     --code-third-color-light: #FF5C00;
     --code-quotation-marks-color-light: #FF9C00;
+    --code-shadow-color-light: #223C5033;
 
     --create-block-color-light: #a1ff66;
     --update-block-color-light: #fcff63;
@@ -32,7 +33,7 @@
         dark theme
     */
     --background-dark: #373737;
-    --background-secondary-color-dark: #111;
+    --background-secondary-color-dark: #2e2e2e;
     --border-dark: #ebebeb;
     --font-color-dark: #efefef;
     --font-color-lighter-dark: #fff;
@@ -44,11 +45,12 @@
     --sql-color-dark: #FF2A6A;
 
     --code-number-line-color-dark: #0095ff;
-    --code-standard-color-dark: black;
+    --code-standard-color-dark: #efefef;
     --code-first-color-dark: #ED002F;
     --code-second-color-dark: #00A779;
     --code-third-color-dark: #FF5C00;
     --code-quotation-marks-color-dark: #FF9C00;
+    --code-shadow-color-dark: #efefef;
 
     --create-block-color-dark: #a1ff66;
     --update-block-color-dark: #fcff63;
@@ -77,6 +79,7 @@
     --code-second-color: var(--code-second-color-light);
     --code-third-color: var(--code-third-color-light);
     --code-quotation-marks-color: var(--code-quotation-marks-color-light);
+    --code-shadow-color: var(--code-shadow-color-light);
 
     --create-block-color: var(--create-block-color-light);
     --update-block-color: var(--update-block-color-light);

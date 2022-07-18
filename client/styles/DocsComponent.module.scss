@@ -58,9 +58,9 @@
   font-size: 16px;
   color: $code-standard-color;
 
-  -webkit-box-shadow: 0px 0px 3px 0px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 0px 3px 0px rgba(34, 60, 80, 0.2);
+  -webkit-box-shadow: 0px 0px 3px 0px $code-shadow-color;
+  -moz-box-shadow: 0px 0px 3px 0px $code-shadow-color;
+  box-shadow: 0px 0px 3px 0px $code-shadow-color;
 }
 
 .codeLine {
@@ -70,6 +70,8 @@
   border-bottom: 1px solid $border;
 
   padding: 5px;
+
+  color: $code-standard-color;
 
   &:first-of-type {
     border-top: 0;
@@ -105,10 +107,12 @@
 }
 
 .codeCopyButton {
+  color: $font-color;
   padding: 7px;
   border: 1px solid $border;
   cursor: pointer;
   background-color: $background;
+  transition: background-color 250ms ease 250ms;
   &:hover {
     background-color: $background-secondary-color;
   }

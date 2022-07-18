@@ -4,7 +4,6 @@ html,
 body {
   padding: 0;
   margin: 0;
-  transition: background-color 150ms linear 100ms;
   background-color: $background;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -69,7 +68,6 @@ body {
     justify-content: center;
     #HeaderThemeSection {
       display: flex;
-      border: 1px solid $border;
       & div {
         padding: 5px;
         font-size: 14px;

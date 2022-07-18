@@ -38,6 +38,7 @@ const Header = () => {
         document.body.style.setProperty('--code-second-color', `var(--code-second-color-${theme})`);
         document.body.style.setProperty('--code-third-color', `var(--code-third-color-${theme})`);
         document.body.style.setProperty('--code-quotation-marks-color', `var(--code-quotation-marks-color-${theme})`);
+        document.body.style.setProperty('--code-shadow-color', `var(--code-shadow-color-${theme})`);
         document.body.style.setProperty('--create-block-color', `var(--create-block-color-${theme})`);
         document.body.style.setProperty('--update-block-color', `var(--update-block-color-${theme})`);
         document.body.style.setProperty('--delete-block-color', `var(--delete-block-color-${theme})`);
