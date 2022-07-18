@@ -22,8 +22,8 @@ const Header = () => {
             </div>
             <div id="HeaderTheme">
                 <div id="HeaderThemeSection">
-                    <div id="HeaderThemeActiveBlock">light</div>
-                    <div id="HeaderThemeNotActiveBlock">dark</div>
+                    <div id="HeaderThemeLight">light</div>
+                    <div id="HeaderThemeDark">dark</div>
                 </div>
 
             </div>

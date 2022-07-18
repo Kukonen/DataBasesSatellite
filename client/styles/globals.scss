@@ -33,6 +33,7 @@ body {
     justify-content: center;
     gap: 10px;
     .HeaderLink {
+      transition: color 200ms ease 0s;
       font-size: 20px;
       color: $font-color;
       text-decoration: none;
@@ -67,19 +68,27 @@ body {
     #HeaderThemeSection {
       display: flex;
       border: 1px solid $border;
-      #HeaderThemeActiveBlock {
+      & div {
+        padding: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: font-size 150ms ease-in 150ms,
+                    padding-bottom 150ms ease-in 150ms,
+                    padding-right 150ms ease-in 150ms,
+                    padding-top 150ms ease-in 150ms,
+                    padding-left 150ms ease-in 150ms;
+      }
+      & div:hover {
+        padding: 3px;
+        font-size: 16px;
+      }
+      #HeaderThemeLight {
         background-color: $background;
         color: $font-color;
-        padding: 5px;
-        font-size: 14px;
-        cursor: pointer;
       }
-      #HeaderThemeNotActiveBlock {
+      #HeaderThemeDark {
         background-color: $font-color;
         color: $background;
-        padding: 5px;
-        font-size: 14px;
-        cursor: pointer;
       }
     }
 
@@ -96,9 +105,9 @@ body {
   a {
     color: $font-color;
     text-decoration: none;
+    transition: color 200ms ease 0ms;
     &:hover{
       color: $font-color-light;
-      text-decoration: underline;
     }
   }
 }

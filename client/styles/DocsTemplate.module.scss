@@ -3,6 +3,7 @@
 @mixin NavBarLink() {
   text-decoration: none;
   color: $font-color;
+  transition: color 200ms ease 0s;
 }
 
 .container {
@@ -77,6 +78,7 @@
 }
 
 .switchPageLinkBlock {
+  transition: background-color 250ms ease 250ms;
   padding: 7px;
   border: 1px solid $border;
   &:hover {

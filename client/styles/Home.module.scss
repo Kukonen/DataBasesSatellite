@@ -47,6 +47,7 @@
     font-size: 38px;
     color: $font-color;
     text-decoration: none;
+    transition: color 250ms ease 0s;
     &:hover {
         color: $font-color-light;
     }
