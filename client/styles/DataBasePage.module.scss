@@ -1,4 +1,4 @@
-@import "light.theme";
+@import "theme";
 
 .container {
   display: flex;
@@ -57,6 +57,7 @@
 .text {
   display: flex;
   justify-content: center;
+  color: $font-color;
   div {
     text-align: center;
     width: 30%;

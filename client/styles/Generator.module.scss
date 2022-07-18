@@ -1,4 +1,4 @@
-@import "light.theme";
+@import "theme";
 
 @mixin generator-header-database-block($bg-color) {
   padding: 5px;
@@ -10,7 +10,10 @@
 }
 
 .Generator {
-
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .GeneratorHeader {
@@ -82,4 +85,18 @@
 
 .GeneratorHeaderDataBaseBlock {
   @include generator-header-database-block(darken($background, 2%));
+}
+
+.GenerateButtonSection {
+  flex: -1 0 auto;
+  display: flex;
+  padding: 5px;
+  justify-content: center;
+}
+
+.GenerateButton {
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 20px;
+  border: 1px solid $border;
 }

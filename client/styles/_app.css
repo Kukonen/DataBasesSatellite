@@ -1,0 +1,85 @@
+:root {
+
+    /*
+        light theme
+    */
+
+    --background-light: white;
+    --background-secondary-color-light: #eee;
+    --border-light: #ebebeb;
+    --font-color-light: black;
+    --font-color-lighter-light: #333;
+    --text-decoration-color-light: #4ddeff;
+
+    --mongodb-color-light: #499d4a;
+    --mysql-color-light: #f29111;
+    --postgresql-color-light: #336791;
+    --sql-color-light: #FF2A6A;
+
+    --code-number-line-color-light: #0095ff;
+    --code-standard-color-light: black;
+    --code-first-color-light: #ED002F;
+    --code-second-color-light: #00A779;
+    --code-third-color-light: #FF5C00;
+    --code-quotation-marks-color-light: #FF9C00;
+
+    --create-block-color-light: #a1ff66;
+    --update-block-color-light: #fcff63;
+    --delete-block-color-light: #ff8178;
+    --get-block-color-light: #78aeff;
+
+    /*
+        dark theme
+    */
+    --background-dark: #373737;
+    --background-secondary-color-dark: #111;
+    --border-dark: #ebebeb;
+    --font-color-dark: #efefef;
+    --font-color-lighter-dark: #fff;
+    --text-decoration-color-dark: #4ddeff;
+
+    --mongodb-color-dark: #499d4a;
+    --mysql-color-dark: #f29111;
+    --postgresql-color-dark: #336791;
+    --sql-color-dark: #FF2A6A;
+
+    --code-number-line-color-dark: #0095ff;
+    --code-standard-color-dark: black;
+    --code-first-color-dark: #ED002F;
+    --code-second-color-dark: #00A779;
+    --code-third-color-dark: #FF5C00;
+    --code-quotation-marks-color-dark: #FF9C00;
+
+    --create-block-color-dark: #a1ff66;
+    --update-block-color-dark: #fcff63;
+    --delete-block-color-dark: #ff8178;
+    --get-block-color-dark: #78aeff;
+
+    /*
+        working theme
+    */
+
+    --background: var(--background-light);
+    --background-secondary-color: var(--background-secondary-color-light);
+    --border: var(--border-light);
+    --font-color: var(--font-color-light);
+    --font-color-lighter: var(--font-color-lighter-light);
+    --text-decoration-color: var(--text-decoration-color-light);
+
+    --mongodb-color: var(--mongodb-color-light);
+    --mysql-color: var(--mysql-color-light);
+    --postgresql-color: var(--postgresql-color-light);
+    --sql-color: var(--sql-color-light);
+
+    --code-number-line-color: var(--code-number-line-color-light);
+    --code-standard-color: var(--code-standard-color-light);
+    --code-first-color: var(--code-first-color-light);
+    --code-second-color: var(--code-second-color-light);
+    --code-third-color: var(--code-third-color-light);
+    --code-quotation-marks-color: var(--code-quotation-marks-color-light);
+
+    --create-block-color: var(--create-block-color-light);
+    --update-block-color: var(--update-block-color-light);
+    --delete-block-color: var(--delete-block-color-light);
+    --get-block-color: var(--get-block-color-light);
+}

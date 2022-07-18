@@ -1,4 +1,4 @@
-@import "light.theme";
+@import "theme";
 
 .container {
     display: flex;
@@ -38,6 +38,7 @@
 }
 
 .textBlockTitle {
+    color: $font-color;
     margin: 0 auto;
     font-size: 44px;
 }

@@ -1,6 +1,7 @@
-@import "light.theme";
+@import "theme";
 
 @mixin contentBlock() {
+  color: $font-color;
   margin-bottom: 15px;
   &:last-of-type {
     margin-bottom: 0;
