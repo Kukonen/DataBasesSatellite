@@ -118,7 +118,7 @@ const GeneratorHeader = () => {
                     >
                         {
                             Databases.map(database => {
-                                return (
+                                return database.name !== currentDatabase.name ? (
                                     <div
                                         className={styles.GeneratorHeaderDataBaseBlock}
                                         key={database.id}
@@ -129,8 +129,9 @@ const GeneratorHeader = () => {
                                         }}
                                     >
                                         {database.name}
-                                    </div>
-                                )
+                                    </div>) :
+                                    null
+
                             })
                         }
                     </div>

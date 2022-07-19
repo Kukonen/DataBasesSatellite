@@ -7,6 +7,7 @@
   width: 100px;
   text-align: center;
   background-color: $bg-color;
+  color: $font-color;
 }
 
 .Generator {
@@ -38,34 +39,34 @@
 .createBlock {
   background-color: $create-block-color;
   &:hover {
-    background-color: lighten($create-block-color, 10%);
+    //background-color: lighten($create-block-color, 10%);
   }
 }
 
 .updateBlock {
   background-color: $update-block-color;
   &:hover {
-    background-color: lighten($update-block-color, 10%);
+    //background-color: lighten($update-block-color, 10%);
   }
 }
 
 .deleteBock {
   background-color: $delete-block-color;
   &:hover {
-    background-color: lighten($delete-block-color, 10%);
+    //background-color: lighten($delete-block-color, 10%);
   }
 }
 
 .getBlock {
   background-color: $get-block-color;
   &:hover {
-    background-color: lighten($get-block-color, 10%);
+    //background-color: lighten($get-block-color, 10%);
   }
 }
 
 .GeneratorHeaderDataBaseSection {
   width: 30%;
-  padding: 5px 10px;;
+  padding: 5px 10px;
   display: flex;
   justify-content: center;
 }
@@ -81,10 +82,18 @@
   position: absolute;
   display: flex;
   flex-direction: column;
+  div {
+    border: 1px solid $border;
+    cursor: pointer;
+    padding: 5px;
+    width: 100px;
+    color: $font-color;
+    text-align: center;
+  }
 }
 
 .GeneratorHeaderDataBaseBlock {
-  @include generator-header-database-block(darken($background, 2%));
+  //@include generator-header-database-block(darken($background, 2%));
 }
 
 .GenerateButtonSection {
@@ -99,4 +108,9 @@
   cursor: pointer;
   font-size: 20px;
   border: 1px solid $border;
+  color: $font-color;
+  transition: all 550ms unset 550ms;
+  &:hover {
+    background-color: $background-secondary-color;
+  }
 }
