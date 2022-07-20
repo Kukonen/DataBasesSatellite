@@ -1,39 +1,12 @@
-import {ReactSortable} from "react-sortablejs";
 import {useEffect, useState} from "react";
-import {Command, commandType} from "../../generator/commands/CommandsInterface";
+import {Command} from "../../generator/commands/CommandsInterface";
 import {DefaultCommands, SchemaDefaultCommands} from "../../generator/commands/Commnads";
 import styles from '../../styles/Generator.module.scss';
-import classNames from "classnames";
 import {Databases, DatabasesType} from "../../generator/databases";
 import {GeneratorContentMode} from "../../generator/generatorContentMode";
 import store from "../../store/store";
 import {setGeneratorContentMod} from "../../store/actionCreators/generatorContentModeActionCreator";
-
-const getStyleCommandBlock = (style : commandType) => {
-
-    switch (style) {
-        case "create":
-            return classNames(
-                styles.GeneratorHeaderCommandBlock,
-                styles.createBlock
-            )
-        case "update":
-            return  classNames(
-                styles.GeneratorHeaderCommandBlock,
-                styles.updateBlock
-            )
-        case "delete":
-            return classNames(
-                styles.GeneratorHeaderCommandBlock,
-                styles.deleteBock
-            )
-        case "get":
-            return  classNames(
-                styles.GeneratorHeaderCommandBlock,
-                styles.getBlock
-            )
-    }
-}
+import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
 
 const GeneratorHeader = () => {
     const [commands, setCommands] = useState<Command[]>(DefaultCommands);
@@ -87,12 +60,8 @@ const GeneratorHeader = () => {
                     }
                 </div>
             </div>
-            <ReactSortable
-                list={commands}
-                setList={setCommands}
+            <div
                 className={styles.GeneratorHeaderCommandsSection}
-                disabled={true}
-                clone={this}
             >
                 {
                     commands.map((command) => (
@@ -104,7 +73,7 @@ const GeneratorHeader = () => {
                         </div>
                     )
                 )}
-            </ReactSortable>
+            </div>
             <div className={styles.GeneratorHeaderDataBaseSection}>
                 <div className={styles.GeneratorHeaderCommandsContainer}>
                     <div className={styles.GeneratorHeaderDataBaseTitle}
