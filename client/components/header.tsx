@@ -40,9 +40,13 @@ const Header = () => {
         document.body.style.setProperty('--code-quotation-marks-color', `var(--code-quotation-marks-color-${theme})`);
         document.body.style.setProperty('--code-shadow-color', `var(--code-shadow-color-${theme})`);
         document.body.style.setProperty('--create-block-color', `var(--create-block-color-${theme})`);
+        document.body.style.setProperty('--create-block-color-hover', `var(--create-block-color-hover-${theme})`);
         document.body.style.setProperty('--update-block-color', `var(--update-block-color-${theme})`);
+        document.body.style.setProperty('--update-block-color-hover', `var(--update-block-color-hover-${theme})`);
         document.body.style.setProperty('--delete-block-color', `var(--delete-block-color-${theme})`);
+        document.body.style.setProperty('--delete-block-color-hover', `var(--delete-block-color-hover-${theme})`);
         document.body.style.setProperty('--get-block-color', `var(--get-block-color-${theme})`);
+        document.body.style.setProperty('--get-block-color-hover', `var(--get-block-color-hover-${theme})`);
     }, [theme])
 
     return (

@@ -13,13 +13,13 @@ const Generator = () => {
     })
 
     return (
-        <div className={styles.Generator}>
+        <>
             <GeneratorHeader />
             <GeneratorContent />
             <div className={styles.GenerateButtonSection}>
                 <div className={styles.GenerateButton}>Generate!</div>
             </div>
-        </div>
+        </>
     )
 }
 
