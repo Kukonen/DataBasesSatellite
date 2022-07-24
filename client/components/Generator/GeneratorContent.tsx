@@ -1,11 +1,16 @@
 import styles from '../../styles/Generator.module.scss';
 import {useState} from "react";
-import {Command} from "../../generator/commands/CommandsInterface";
+import {
+    CommandCreate,
+    CommandDelete,
+    CommandGet,
+    CommandUpdate
+} from "../../generator/commands/CommandsInterface";
 import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
 
 const GeneratorContent = () => {
 
-    const [commands, setCommands] = useState<Command[]>([]);
+    const [commands, setCommands] = useState<(CommandCreate | CommandGet | CommandUpdate | CommandDelete)[]>([]);
 
     return (
         <div id="GeneratorContentElement" className={styles.GeneratorContent}>
@@ -13,16 +18,17 @@ const GeneratorContent = () => {
                 className={styles.GenerateCommandsSection}
             >
                 {
-                    commands.map((command) => (
-                            <div
-                                key={command.id}
-                                className={getStyleCommandBlock(command.type, 'content')}
-                            >
-                                {command.title}
-                            </div>
-                        )
-                    )}
+                    commands.map((command) => GetCommandElement(command))
+                }
             </div>
+        </div>
+    )
+}
+
+const GetCommandElement = (command : CommandCreate | CommandGet | CommandUpdate | CommandDelete) => {
+    return (
+        <div className={getStyleCommandBlock(command.type, 'content')}>
+
         </div>
     )
 }
