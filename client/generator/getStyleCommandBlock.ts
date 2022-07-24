@@ -2,7 +2,7 @@ import {commandType} from "./commands/CommandsInterface";
 import classNames from "classnames";
 import styles from "../styles/Generator.module.scss";
 
-export const getStyleCommandBlock = (style : commandType) => {
+export const getStyleCommandBlock = (style : commandType, type: 'header' | 'content') => {
 
     switch (style) {
         case "create":

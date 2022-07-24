@@ -9,7 +9,7 @@ const Layout = ({children } : LayoutProps) => {
     return (
         <>
             <Header/>
-            <div style={{flex: 1}}>
+            <div id="main" style={{flex: 1}}>
                 {children}
             </div>
             <Footer />

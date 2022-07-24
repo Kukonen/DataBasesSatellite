@@ -7,6 +7,7 @@ import {GeneratorContentMode} from "../../generator/generatorContentMode";
 import store from "../../store/store";
 import {setGeneratorContentMod} from "../../store/actionCreators/generatorContentModeActionCreator";
 import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
+import classNames from "classnames";
 
 const GeneratorHeader = () => {
     const [commands, setCommands] = useState<Command[]>(DefaultCommands);
@@ -48,7 +49,7 @@ const GeneratorHeader = () => {
     }
 
     return (
-        <div className={styles.GeneratorHeader}>
+        <div id="GeneratorHeaderElement" className={styles.GeneratorHeader}>
             <div className={styles.GeneratorHeaderDataBaseSection}>
                 <div className={styles.GeneratorHeaderDataBaseTitle}
                      onClick={() => changeContentMod()}
@@ -67,7 +68,10 @@ const GeneratorHeader = () => {
                     commands.map((command) => (
                         <div
                             key={command.id}
-                            className={getStyleCommandBlock(command.type)}
+                            className={getStyleCommandBlock(command.type, 'header')}
+                            onClick={() => {
+                                console.log(this)
+                            }}
                         >
                             {command.title}
                         </div>

@@ -2,7 +2,6 @@
 
 @mixin headerCommandBlock($standard-color, $hover-color) {
   background-color: $standard-color;
-  transition: background-color 150ms ease 150ms;
   &:hover {
     background-color: $hover-color;
   }
@@ -24,7 +23,8 @@
   width: 70%;
   padding: 5px 10px;;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 40px;
 }
 
 .GeneratorHeaderCommandBlock {
@@ -32,7 +32,11 @@
   font-size: 20px;
   border: 1px solid $border;
   cursor: pointer;
-
+  transition: transform 250ms ease 300ms,
+              background-color 150ms ease 100ms;
+  &:hover {
+    transform: translateY(5px);
+  }
 }
 
 .createBlock {
@@ -99,7 +103,11 @@
   gap: 15px;
 }
 
-.GenerateButtonSection {
+.GeneratorContent {
+  color: $font-color;
+}
+
+.GeneratorFooter {
   margin-top: 35px;
   display: flex;
   padding: 5px;
