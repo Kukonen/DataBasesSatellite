@@ -7,10 +7,13 @@ import {
     CommandUpdate
 } from "../../generator/commands/CommandsInterface";
 import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
+import store from "../../store/store";
 
 const GeneratorContent = () => {
 
     const [commands, setCommands] = useState<(CommandCreate | CommandGet | CommandUpdate | CommandDelete)[]>([]);
+
+    store.subscribe(() => console.info(store.getState()));
 
     return (
         <div id="GeneratorContentElement" className={styles.GeneratorContent}>

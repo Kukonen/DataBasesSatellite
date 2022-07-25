@@ -5,7 +5,8 @@ const initialState:State = {
         id: "sql",
         name: "SQL"
     },
-    generatorContentMod: 'commands'
+    generatorContentMod: 'commands',
+    commands: []
 }
 
 export default initialState;

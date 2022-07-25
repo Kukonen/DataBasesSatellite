@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Command} from "../../generator/commands/CommandsInterface";
+import {Command, commandType} from "../../generator/commands/CommandsInterface";
 import {DefaultCommands, SchemaDefaultCommands} from "../../generator/commands/Commnads";
 import styles from '../../styles/Generator.module.scss';
 import {Databases, DatabasesType} from "../../generator/databases";
@@ -7,7 +7,7 @@ import {GeneratorContentMode} from "../../generator/generatorContentMode";
 import store from "../../store/store";
 import {setGeneratorContentMod} from "../../store/actionCreators/generatorContentModeActionCreator";
 import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
-import classNames from "classnames";
+import commandsPushToEnd from "../../store/actionCreators/commandsActionCreator";
 
 const GeneratorHeader = () => {
     const [commands, setCommands] = useState<Command[]>(DefaultCommands);
@@ -47,6 +47,9 @@ const GeneratorHeader = () => {
                 DefaultCommands
         );
     }
+    const addCommands = (commandType: commandType) => {
+        store.dispatch(commandsPushToEnd(commandType));
+    }
 
     return (
         <div id="GeneratorHeaderElement" className={styles.GeneratorHeader}>
@@ -69,9 +72,7 @@ const GeneratorHeader = () => {
                         <div
                             key={command.id}
                             className={getStyleCommandBlock(command.type, 'header')}
-                            onClick={() => {
-                                console.log(this)
-                            }}
+                            onClick={() => addCommands(command.type)}
                         >
                             {command.title}
                         </div>
