@@ -28,6 +28,8 @@ export const getStyleCommandBlock = (style : commandType, type: 'header' | 'cont
         }
     }
 
+    // console.log(style)
+
     if (type === 'content') {
         switch (style) {
             case "create":

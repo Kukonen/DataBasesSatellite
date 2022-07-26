@@ -7,6 +7,7 @@ import {
     commandType
 } from "../../generator/commands/CommandsInterface";
 import store from "../store";
+import getRandomString from "../../scripts/getRandomString";
 
 export default function commandsPushToEnd(commandType: commandType) {
 
@@ -18,25 +19,33 @@ export default function commandsPushToEnd(commandType: commandType) {
     switch (commandType) {
         case "create":
             const commandCreate:CommandCreate = {
-                type: "create"
+                id: getRandomString(8),
+                type: "create",
+                title: ""
             };
             commands.push(commandCreate);
             break;
         case "get":
             const commandGet:CommandGet = {
-                type: "get"
+                id: getRandomString(8),
+                type: "get",
+                title: ""
             };
             commands.push(commandGet);
             break;
         case "update":
             const commandUpdate:CommandUpdate = {
-                type: "update"
+                id: getRandomString(8),
+                type: "update",
+                title: ""
             };
             commands.push(commandUpdate);
             break;
         case "delete":
             const commandDelete:CommandDelete = {
-                type: "delete"
+                id: getRandomString(8),
+                type: "delete",
+                title: ""
             };
             commands.push(commandDelete);
             break;

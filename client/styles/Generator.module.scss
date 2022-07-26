@@ -99,12 +99,28 @@
 .GenerateCommandsSection {
   padding: 15px 15px;
   display: flex;
-  justify-content: start;
+  justify-content: space-evenly;
   gap: 15px;
 }
 
 .GeneratorContent {
   color: $font-color;
+}
+
+.GeneratorContentCommandBlock {
+  padding: 5px;
+}
+
+.createBlockTitle {
+  padding: 5px;
+}
+
+.createBlockTitleInput {
+  text-align: center;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  padding: 3px;
 }
 
 .GeneratorFooter {

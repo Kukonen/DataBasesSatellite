@@ -6,14 +6,22 @@ import {
     CommandGet,
     CommandUpdate
 } from "../../generator/commands/CommandsInterface";
-import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
 import store from "../../store/store";
+import GeneratedCommandCreate from "./GeneratedContentComponents/GeneratedCommandCreate";
+import GeneratedCommandGet from "./GeneratedContentComponents/GeneratedCommandGet";
+import GeneratedCommandUpdate from "./GeneratedContentComponents/GeneratedCommandUpdate";
+import GeneratedCommandDelete from "./GeneratedContentComponents/GeneratedCommandDelete";
 
 const GeneratorContent = () => {
 
     const [commands, setCommands] = useState<(CommandCreate | CommandGet | CommandUpdate | CommandDelete)[]>([]);
 
-    store.subscribe(() => console.info(store.getState()));
+    store.subscribe(() => {
+        const state = store.getState().commandsReducer;
+        //@ts-ignore
+        const commands = state.commands;
+        setCommands(commands);
+    });
 
     return (
         <div id="GeneratorContentElement" className={styles.GeneratorContent}>
@@ -29,11 +37,25 @@ const GeneratorContent = () => {
 }
 
 const GetCommandElement = (command : CommandCreate | CommandGet | CommandUpdate | CommandDelete) => {
-    return (
-        <div className={getStyleCommandBlock(command.type, 'content')}>
+    // console.log(command)
 
-        </div>
-    )
+    if (command.type === "create") {
+        return <GeneratedCommandCreate command={command}/>
+    }
+
+    if (command.type === "get") {
+        return <GeneratedCommandGet command={command}/>
+    }
+
+    if (command.type === "update") {
+        return <GeneratedCommandUpdate command={command}/>
+    }
+
+    if (command.type === "delete") {
+        return <GeneratedCommandDelete command={command}/>
+    }
+
+
 }
 
 export default GeneratorContent;
