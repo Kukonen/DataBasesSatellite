@@ -2,10 +2,13 @@ import {getStyleCommandBlock} from "../../../generator/getStyleCommandBlock";
 import styles from "../../../styles/Generator.module.scss";
 import {useState} from "react";
 import {CommandUpdate} from "../../../generator/commands/CommandsInterface";
+import Image from "next/image";
+import TrashIcon from "../../../public/trash.svg";
 
 const GeneratedCommandUpdate = (props:any) => {
 
     const command:CommandUpdate = props.command;
+    const deleteBlock = props.delete;
 
     const [title, setTitle] = useState<string>(command.title ? command.title : "");
 
@@ -13,14 +16,24 @@ const GeneratedCommandUpdate = (props:any) => {
         <div className={getStyleCommandBlock(command.type, 'content')}
              key={command.id}
         >
-            <div className={styles.createBlockTitle}>
+            <div className={styles.GeneratorContentCommandBlockTitle}>
                 <input type="text"
-                       className={styles.createBlockTitleInput}
+                       className={styles.GeneratorContentCommandBlockTitleInput}
                        value={title}
                        onChange={event => setTitle(event.target.value)}
                        placeholder={"Command Name"}
                 />
-
+            </div>
+            <hr className={styles.GeneratorContentCommandBlockDeleteHr}/>
+            <div className={styles.GeneratorContentCommandBlockDeleteSection}>
+                <div
+                    className={styles.GeneratorContentCommandBlockDeleteButton}
+                    onClick={() => deleteBlock(command.id)}
+                >
+                    <Image
+                        src={TrashIcon}
+                    />
+                </div>
             </div>
         </div>
     )

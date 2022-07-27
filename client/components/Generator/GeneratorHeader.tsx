@@ -7,7 +7,7 @@ import {GeneratorContentMode} from "../../generator/generatorContentMode";
 import store from "../../store/store";
 import {setGeneratorContentMod} from "../../store/actionCreators/generatorContentModeActionCreator";
 import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
-import commandsPushToEnd from "../../store/actionCreators/commandsActionCreator";
+import commandsPushToEnd from "../../store/actionCreators/commands/commandsPushToEndActionCreator";
 
 const GeneratorHeader = () => {
     const [commands, setCommands] = useState<Command[]>(DefaultCommands);

@@ -99,8 +99,8 @@
 .GenerateCommandsSection {
   padding: 15px 15px;
   display: flex;
-  justify-content: space-evenly;
-  gap: 15px;
+  //justify-content: space-evenly;
+  gap: 30px;
 }
 
 .GeneratorContent {
@@ -109,18 +109,38 @@
 
 .GeneratorContentCommandBlock {
   padding: 5px;
+  width: 250px;
 }
 
-.createBlockTitle {
+.GeneratorContentCommandBlockTitle {
   padding: 5px;
+  width: 240px;
 }
 
-.createBlockTitleInput {
+.GeneratorContentCommandBlockTitleInput {
   text-align: center;
   font-size: 20px;
   border: 0;
   outline: none;
   padding: 3px;
+  width: 234px;
+}
+
+.GeneratorContentCommandBlockDeleteHr {
+  border: 1px solid $border;
+  width: 75%;
+}
+
+.GeneratorContentCommandBlockDeleteSection {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.GeneratorContentCommandBlockDeleteButton {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
 }
 
 .GeneratorFooter {

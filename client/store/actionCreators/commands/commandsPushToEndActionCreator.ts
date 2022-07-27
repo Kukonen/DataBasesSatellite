@@ -1,13 +1,7 @@
-import {COMMANDS_PUSH_TO_END} from '../actions/commandsAction';
-import {
-    CommandCreate,
-    CommandDelete,
-    CommandGet,
-    CommandUpdate,
-    commandType
-} from "../../generator/commands/CommandsInterface";
-import store from "../store";
-import getRandomString from "../../scripts/getRandomString";
+import {CommandCreate, CommandDelete, CommandGet, CommandUpdate, commandType} from "../../../generator/commands/CommandsInterface";
+import store from "../../store";
+import getRandomString from "../../../scripts/getRandomString";
+import {COMMANDS_PUSH_TO_END} from "../../actions/commandsAction";
 
 export default function commandsPushToEnd(commandType: commandType) {
 
