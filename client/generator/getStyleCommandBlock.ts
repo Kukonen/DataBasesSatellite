@@ -5,10 +5,10 @@ import styles from "../styles/Generator.module.scss";
 export const getStyleCommandBlock = (style : commandType, type: 'header' | 'content') => {
     if (type === 'header') {
         switch (style) {
-            case "create":
-                return classNames(
+            case "add":
+                return  classNames(
                     styles.GeneratorHeaderCommandBlock,
-                    styles.createBlock
+                    styles.addBlock
                 )
             case "update":
                 return  classNames(
@@ -24,18 +24,26 @@ export const getStyleCommandBlock = (style : commandType, type: 'header' | 'cont
                 return  classNames(
                     styles.GeneratorHeaderCommandBlock,
                     styles.getBlock
+                )
+            case "create":
+                return classNames(
+                    styles.GeneratorHeaderCommandBlock,
+                    styles.createBlock
+                )
+            case "drop":
+                return classNames(
+                    styles.GeneratorHeaderCommandBlock,
+                    styles.dropBlock
                 )
         }
     }
 
-    // console.log(style)
-
     if (type === 'content') {
         switch (style) {
-            case "create":
+            case "add":
                 return classNames(
                     styles.GeneratorContentCommandBlock,
-                    styles.createBlock
+                    styles.addBlock
                 )
             case "update":
                 return  classNames(
@@ -51,6 +59,16 @@ export const getStyleCommandBlock = (style : commandType, type: 'header' | 'cont
                 return  classNames(
                     styles.GeneratorContentCommandBlock,
                     styles.getBlock
+                )
+            case "create":
+                return classNames(
+                    styles.GeneratorContentCommandBlock,
+                    styles.createBlock
+                )
+            case "drop":
+                return classNames(
+                    styles.GeneratorContentCommandBlock,
+                    styles.dropBlock
                 )
         }
     }

@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Command, commandType} from "../../generator/commands/CommandsInterface";
+import {CommandCreator, commandType} from "../../generator/commands/CommandsInterface";
 import {DefaultCommands, SchemaDefaultCommands} from "../../generator/commands/Commnads";
 import styles from '../../styles/Generator.module.scss';
 import {Databases, DatabasesType} from "../../generator/databases";
@@ -8,10 +8,9 @@ import store from "../../store/store";
 import {setGeneratorContentMod} from "../../store/actionCreators/generatorContentModeActionCreator";
 import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
 import commandsPushToEnd from "../../store/actionCreators/commands/commandsPushToEndActionCreator";
-import commandsEmptyArray from "../../store/actionCreators/commands/commandsEmptyArray";
 
 const GeneratorHeader = () => {
-    const [commands, setCommands] = useState<Command[]>(DefaultCommands);
+    const [commands, setCommands] = useState<CommandCreator[]>(DefaultCommands);
     const [currentDatabase, setCurrentDatabase] = useState<DatabasesType>(Databases[0]);
     const [databaseAccordionActive, setDatabaseAccordionActive] = useState<boolean>(false);
     const [contentMode, setContentMod] = useState<GeneratorContentMode>('commands');
@@ -36,11 +35,6 @@ const GeneratorHeader = () => {
     }, [])
 
     const changeContentMod = () => {
-        if (contentMode === "commands") {
-            store.dispatch(commandsEmptyArray());
-        } else {
-            // TODO DELETE ARRAY WITH SCHEMAS
-        }
         store.dispatch(setGeneratorContentMod(contentMode));
         setContentMod(
             contentMode === 'commands' ?

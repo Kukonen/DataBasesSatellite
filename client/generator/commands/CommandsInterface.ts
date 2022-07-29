@@ -1,32 +1,38 @@
-export interface Command {
+export interface CommandCreator {
     id: string;
     title: string;
     text: string;
     type: commandType;
 }
 
-export interface CommandCreate {
+interface Command {
     id: string;
-    type: 'create';
     title: string;
+    type: string;
 }
 
-export interface CommandGet {
-    id: string;
+export interface CommandAdd extends Command {
+    type: 'add';
+}
+
+export interface CommandGet extends Command {
     type: 'get';
-    title: string;
 }
 
-export interface CommandUpdate {
-    id: string;
+export interface CommandUpdate extends Command {
     type: 'update';
-    title: string;
 }
 
-export interface CommandDelete {
-    id: string;
+export interface CommandDelete extends Command {
     type: 'delete';
-    title: string;
 }
 
-export type commandType = "create" | "get" | "update" | "delete";
+export interface CommandCreate extends Command {
+    type: 'create';
+}
+
+export interface CommandDrop extends Command {
+    type: 'drop';
+}
+
+export type commandType = "add" | "get" | "update" | "delete" | "create" | "drop";

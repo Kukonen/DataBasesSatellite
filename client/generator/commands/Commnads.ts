@@ -1,11 +1,11 @@
-import {Command} from "./CommandsInterface";
+import {CommandCreator} from "./CommandsInterface";
 
-export const DefaultCommands:Command[] = [
+export const DefaultCommands:CommandCreator[] = [
     {
         id: "default_1",
         title: "Add",
         text: "Add data to database",
-        type: "create"
+        type: "add"
     },
     {
         id: "default_2",
@@ -27,7 +27,7 @@ export const DefaultCommands:Command[] = [
     }
 ];
 
-export const SchemaDefaultCommands:Command[] = [
+export const SchemaDefaultCommands:CommandCreator[] = [
     {
         id: "schema_default_1",
         title: "Create",
@@ -38,6 +38,6 @@ export const SchemaDefaultCommands:Command[] = [
         id: "schema_default_2",
         title: "Drop",
         text: "Drop database",
-        type: "delete"
+        type: "drop"
     }
 ]

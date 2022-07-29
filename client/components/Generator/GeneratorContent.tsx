@@ -1,8 +1,9 @@
 import styles from '../../styles/Generator.module.scss';
 import {useEffect, useState} from "react";
 import {
+    CommandAdd,
     CommandCreate,
-    CommandDelete,
+    CommandDelete, CommandDrop,
     CommandGet,
     CommandUpdate
 } from "../../generator/commands/CommandsInterface";
@@ -12,10 +13,12 @@ import GeneratedCommandGet from "./GeneratedContentComponents/GeneratedCommandGe
 import GeneratedCommandUpdate from "./GeneratedContentComponents/GeneratedCommandUpdate";
 import GeneratedCommandDelete from "./GeneratedContentComponents/GeneratedCommandDelete";
 import commandsDeleteById from "../../store/actionCreators/commands/commandsDeleteByIdActionCreator";
+import GeneratedCommandAdd from "./GeneratedContentComponents/GeneratedCommandAdd";
+import GeneratedCommandDrop from "./GeneratedContentComponents/GeneratedCommandDrop";
 
 const GeneratorContent = () => {
 
-    const [commands, setCommands] = useState<(CommandCreate | CommandGet | CommandUpdate | CommandDelete)[]>([]);
+    const [commands, setCommands] = useState<(CommandAdd | CommandGet | CommandUpdate | CommandDelete | CommandCreate | CommandDrop)[]>([]);
     const [justifyContentCommandSection, setJustifyContentCommandSection] = useState<"start" | "space-evenly" | "center">("start");
 
     store.subscribe(() => {
@@ -49,9 +52,9 @@ const GeneratorContent = () => {
         store.dispatch(commandsDeleteById(id));
     }
 
-    const GetCommandElement = (command : CommandCreate | CommandGet | CommandUpdate | CommandDelete) => {
-        if (command.type === "create") {
-            return <GeneratedCommandCreate
+    const GetCommandElement = (command : CommandAdd | CommandGet | CommandUpdate | CommandDelete | CommandCreate | CommandDrop) => {
+        if (command.type === "add") {
+            return <GeneratedCommandAdd
                 command={command}
                 delete={() => deleteBlock(command.id)}
             />
@@ -73,6 +76,20 @@ const GeneratorContent = () => {
 
         if (command.type === "delete") {
             return <GeneratedCommandDelete
+                command={command}
+                delete={() => deleteBlock(command.id)}
+            />
+        }
+
+        if (command.type === "create") {
+            return <GeneratedCommandCreate
+                command={command}
+                delete={() => deleteBlock(command.id)}
+            />
+        }
+
+        if (command.type === "drop") {
+            return <GeneratedCommandDrop
                 command={command}
                 delete={() => deleteBlock(command.id)}
             />

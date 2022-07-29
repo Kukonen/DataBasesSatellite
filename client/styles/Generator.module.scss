@@ -39,8 +39,8 @@
   }
 }
 
-.createBlock {
-  @include headerCommandBlock($create-block-color, $create-block-color-hover);
+.addBlock {
+  @include headerCommandBlock($add-block-color, $add-block-color-hover);
 }
 
 .updateBlock {
@@ -53,6 +53,14 @@
 
 .getBlock {
   @include headerCommandBlock($get-block-color, $get-block-color-hover);
+}
+
+.createBlock {
+  @include headerCommandBlock($create-block-color, $create-block-color-hover);
+}
+
+.dropBlock {
+  @include headerCommandBlock($drop-block-color, $drop-block-color-hover);
 }
 
 .GeneratorHeaderDataBaseSection {

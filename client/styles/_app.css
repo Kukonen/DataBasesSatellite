@@ -24,14 +24,18 @@
     --code-quotation-marks-color-light: #FF9C00;
     --code-shadow-color-light: #223C5033;
 
-    --create-block-color-light: #a1ff66;
-    --create-block-color-hover-light: #b0ff7e;
+    --add-block-color-light: #a1ff66;
+    --add-block-color-hover-light: #b0ff7e;
     --update-block-color-light: #fcff63;
     --update-block-color-hover-light: #fcff81;
     --delete-block-color-light: #ff8178;
     --delete-block-color-hover-light: #ff948c;
     --get-block-color-light: #78aeff;
     --get-block-color-hover-light: #90bfff;
+    --create-block-color-light: #ffd466;
+    --create-block-color-hover-light: #ffee7e;
+    --drop-block-color-light: #641b77;
+    --drop-block-color-hover-light: #6f1b8d;
 
     /*
         dark theme
@@ -56,14 +60,18 @@
     --code-quotation-marks-color-dark: #FF9C00;
     --code-shadow-color-dark: #efefef;
 
-    --create-block-color-dark: #a1ff66;
-    --create-block-color-hover-dark: #b0ff7e;
+    --add-block-color-dark: #a1ff66;
+    --add-block-color-hover-dark: #b0ff7e;
     --update-block-color-dark: #fcff63;
     --update-block-color-hover-dark: #fcff81;
     --delete-block-color-dark: #ff8178;
     --delete-block-color-hover-dark: #ff948c;
     --get-block-color-dark: #78aeff;
     --get-block-color-hover-dark: #90bfff;
+    --create-block-color-dark: #ffd466;
+    --create-block-color-hover-dark: #ffee7e;
+    --drop-block-color-dark: #641b77;
+    --drop-block-color-hover-dark: #6f1b8d;
 
     /*
         working theme
@@ -89,12 +97,16 @@
     --code-quotation-marks-color: var(--code-quotation-marks-color-light);
     --code-shadow-color: var(--code-shadow-color-light);
 
-    --create-block-color: var(--create-block-color-light);
-    --create-block-color-hover: var(--create-block-color-hover-light);
+    --add-block-color: var(--add-block-color-light);
+    --add-block-color-hover: var(--add-block-color-hover-light);
     --update-block-color: var(--update-block-color-light);
     --update-block-color-hover: var(--update-block-color-hover-light);
     --delete-block-color: var(--delete-block-color-light);
     --delete-block-color-hover: var(--delete-block-color-hover-light);
     --get-block-color: var(--get-block-color-light);
     --get-block-color-hover: var(--get-block-color-hover-light);
+    --create-block-color: var(--create-block-color-light);
+    --create-block-color-hover: var(--create-block-color-hover-light);
+    --drop-block-color: var(--drop-block-color-light);
+    --drop-block-color-hover: var(--drop-block-color-hover-light);
 }

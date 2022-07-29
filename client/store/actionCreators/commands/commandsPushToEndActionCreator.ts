@@ -1,4 +1,11 @@
-import {CommandCreate, CommandDelete, CommandGet, CommandUpdate, commandType} from "../../../generator/commands/CommandsInterface";
+import {
+    CommandCreate,
+    CommandDelete,
+    CommandGet,
+    CommandUpdate,
+    commandType,
+    CommandAdd, CommandDrop
+} from "../../../generator/commands/CommandsInterface";
 import store from "../../store";
 import getRandomString from "../../../scripts/getRandomString";
 import {COMMANDS_PUSH_TO_END} from "../../actions/commandsAction";
@@ -6,18 +13,18 @@ import {COMMANDS_PUSH_TO_END} from "../../actions/commandsAction";
 export default function commandsPushToEnd(commandType: commandType) {
 
     const commands:
-        (CommandCreate | CommandGet | CommandUpdate | CommandDelete)[] =
+        (CommandAdd | CommandGet | CommandUpdate | CommandDelete | CommandCreate | CommandDrop)[] =
         // @ts-ignore
         JSON.parse(JSON.stringify(store.getState().commandsReducer.commands));
 
     switch (commandType) {
-        case "create":
-            const commandCreate:CommandCreate = {
+        case "add":
+            const commandAdd:CommandAdd = {
                 id: getRandomString(8),
-                type: "create",
+                type: "add",
                 title: ""
             };
-            commands.push(commandCreate);
+            commands.push(commandAdd);
             break;
         case "get":
             const commandGet:CommandGet = {
@@ -42,6 +49,22 @@ export default function commandsPushToEnd(commandType: commandType) {
                 title: ""
             };
             commands.push(commandDelete);
+            break;
+        case "create":
+            const commandCreate:CommandCreate = {
+                id: getRandomString(8),
+                type: "create",
+                title: ""
+            };
+            commands.push(commandCreate);
+            break;
+        case "drop":
+            const commandDrop:CommandDrop = {
+                id: getRandomString(8),
+                type: "drop",
+                title: ""
+            };
+            commands.push(commandDrop);
             break;
     }
 
