@@ -8,6 +8,7 @@ import store from "../../store/store";
 import {setGeneratorContentMod} from "../../store/actionCreators/generatorContentModeActionCreator";
 import {getStyleCommandBlock} from "../../generator/getStyleCommandBlock";
 import commandsPushToEnd from "../../store/actionCreators/commands/commandsPushToEndActionCreator";
+import commandsEmptyArray from "../../store/actionCreators/commands/commandsEmptyArray";
 
 const GeneratorHeader = () => {
     const [commands, setCommands] = useState<Command[]>(DefaultCommands);
@@ -35,6 +36,11 @@ const GeneratorHeader = () => {
     }, [])
 
     const changeContentMod = () => {
+        if (contentMode === "commands") {
+            store.dispatch(commandsEmptyArray());
+        } else {
+            // TODO DELETE ARRAY WITH SCHEMAS
+        }
         store.dispatch(setGeneratorContentMod(contentMode));
         setContentMod(
             contentMode === 'commands' ?

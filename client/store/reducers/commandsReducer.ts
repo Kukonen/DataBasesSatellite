@@ -1,6 +1,6 @@
 import {State} from "../store";
 import initialState from "../initialState";
-import {COMMANDS_DELETE_BY_ID, COMMANDS_PUSH_TO_END} from "../actions/commandsAction";
+import {COMMANDS_DELETE_BY_ID, COMMANDS_PUSH_TO_END, COMMANDS_EMPTY_ARRAY} from "../actions/commandsAction";
 import {commandsAction} from "./rootReducer";
 
 export default function commandsReducer(state: State = initialState, action: commandsAction) {
@@ -10,6 +10,10 @@ export default function commandsReducer(state: State = initialState, action: com
                 commands: action.value
             }
         case COMMANDS_DELETE_BY_ID:
+            return {
+                commands: action.value
+            }
+        case COMMANDS_EMPTY_ARRAY:
             return {
                 commands: action.value
             }
