@@ -16,15 +16,15 @@ const GeneratedCommandAdd = (props:any) => {
         <div className={getStyleCommandBlock(command.type, 'content')}
              key={command.id}
         >
-            <div className={styles.GeneratorContentCommandBlockTitle}>
+            <div className={styles.GeneratorContentCommandBlockInputSection}>
                 <input type="text"
-                       className={styles.GeneratorContentCommandBlockTitleInput}
+                       className={styles.GeneratorContentCommandBlockInput}
                        value={title}
                        onChange={event => setTitle(event.target.value)}
                        placeholder={"Command Name"}
                 />
             </div>
-            <hr className={styles.GeneratorContentCommandBlockDeleteHr}/>
+            <hr className={styles.GeneratorContentCommandBlockHr}/>
             <div className={styles.GeneratorContentCommandBlockDeleteSection}>
                 <div
                     className={styles.GeneratorContentCommandBlockDeleteButton}
