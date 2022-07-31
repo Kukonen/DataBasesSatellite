@@ -12,6 +12,26 @@
   width: 240px;
 }
 
+@mixin contentBlockInputText() {
+  text-align: center;
+  font-size: 20px;
+  border: 0;
+  outline: none;
+  padding: 3px;
+}
+
+@mixin commandButtonSection() {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+@mixin commandButton {
+  cursor: pointer;
+  height: 25px;
+  width: 25px;
+}
+
 .Generator {
   //display: flex;
   //flex-direction: column;
@@ -130,29 +150,53 @@
 }
 
 .GeneratorContentCommandBlockInput {
-  text-align: center;
-  font-size: 20px;
-  border: 0;
-  outline: none;
-  padding: 3px;
+  @include contentBlockInputText();
   width: 234px;
+}
+
+.GeneratorContentCommandBlockTwoInputSection {
+  @include contentBlock();
+  display: flex;
+  gap: 10px;
+}
+
+.GeneratorContentCommandBlockTwoInputText {
+  @include contentBlockInputText();
+  width: 134px;
+}
+
+.GeneratorContentCommandBlockTwoInputSelect {
+  padding: 3px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 90px;
+  &:after {
+    border: none;
+  }
+}
+
+.GeneratorContentCommandButtonSection {
+  @include commandButtonSection();
+}
+
+.GeneratorContentCommandButton {
+  @include commandButton();
 }
 
 .GeneratorContentCommandBlockHr {
   border: 1px solid $border;
+  background-color: $border;
   width: 75%;
 }
 
 .GeneratorContentCommandBlockDeleteSection {
-  display: flex;
-  justify-content: center;
-  padding: 5px;
+  @include commandButtonSection();
 }
 
 .GeneratorContentCommandBlockDeleteButton {
-  cursor: pointer;
-  height: 25px;
-  width: 25px;
+  @include commandButton();
 }
 
 .GeneratorFooter {

@@ -54,7 +54,9 @@ export default function commandsPushToEnd(commandType: commandType) {
             const commandCreate:CommandCreate = {
                 id: getRandomString(8),
                 type: "create",
-                title: ""
+                title: "",
+                schemaName: "",
+                pools: []
             };
             commands.push(commandCreate);
             break;

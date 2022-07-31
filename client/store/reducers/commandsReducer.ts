@@ -1,6 +1,11 @@
 import {State} from "../store";
 import initialState from "../initialState";
-import {COMMANDS_DELETE_BY_ID, COMMANDS_PUSH_TO_END, COMMANDS_EMPTY_ARRAY} from "../actions/commandsAction";
+import {
+    COMMANDS_DELETE_BY_ID,
+    COMMANDS_PUSH_TO_END,
+    COMMANDS_EMPTY_ARRAY,
+    COMMANDS_CREATE_SET_TEXT, COMMANDS_CREATE_SET_TYPES, COMMANDS_CREATE_ADD_POOL
+} from "../actions/commandsAction";
 import {commandsAction} from "./rootReducer";
 
 export default function commandsReducer(state: State = initialState, action: commandsAction) {
@@ -14,6 +19,18 @@ export default function commandsReducer(state: State = initialState, action: com
                 commands: action.value
             }
         case COMMANDS_EMPTY_ARRAY:
+            return {
+                commands: action.value
+            }
+        case COMMANDS_CREATE_ADD_POOL:
+            return {
+                commands: action.value
+            }
+        case COMMANDS_CREATE_SET_TEXT:
+            return {
+                commands: action.value
+            }
+        case COMMANDS_CREATE_SET_TYPES:
             return {
                 commands: action.value
             }

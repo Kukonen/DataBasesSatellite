@@ -1,3 +1,5 @@
+import {Pool} from "../create/PoolType";
+
 export interface CommandCreator {
     id: string;
     title: string;
@@ -29,6 +31,8 @@ export interface CommandDelete extends Command {
 
 export interface CommandCreate extends Command {
     type: 'create';
+    schemaName: string;
+    pools: Pool[];
 }
 
 export interface CommandDrop extends Command {
