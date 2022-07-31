@@ -10,6 +10,7 @@ import {Pool} from "../../../generator/create/PoolType";
 import getRandomString from "../../../scripts/getRandomString";
 import store from "../../../store/store";
 import commandsCreateAddPool from "../../../store/actionCreators/commands/create/commandsCreateAddPoolActionCreator";
+import commandsCreateDeletePool from "../../../store/actionCreators/commands/create/commandsCreateDeletePoolActionCreator";
 
 const GeneratedCommandCreate = (props:any) => {
 
@@ -33,6 +34,18 @@ const GeneratedCommandCreate = (props:any) => {
         store.dispatch(commandsCreateAddPool(command.id, newPool))
 
         setPools(tempPools);
+    }
+
+    const deletePool = (poolId: string) => {
+        console.log(command.pools);
+        console.log(poolId);
+        store.dispatch(commandsCreateDeletePool(command.id, poolId));
+
+        setPools(pools.filter(pool => {
+            if (pool.id !== poolId) {
+                return pool
+            }
+        }));
     }
 
     return (
@@ -63,6 +76,7 @@ const GeneratedCommandCreate = (props:any) => {
                             id={pool.id}
                             text={pool.text}
                             types={pool.types}
+                            deletePool={() => deletePool(pool.id)}
                         />
                     )
                 })

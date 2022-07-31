@@ -177,6 +177,38 @@
   }
 }
 
+.GeneratorContentCommandBlockThreeInputSection {
+  @include contentBlock();
+  display: flex;
+  gap: 10px;
+}
+
+.GeneratorContentCommandBlockThreeInputText {
+  @include contentBlockInputText();
+  width: 93px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.GeneratorContentCommandBlockThreeInputSelect {
+  padding: 3px;
+  font-size: 18px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 90px;
+  &:after {
+    border: none;
+  }
+}
+
+.GeneratorContentCommandThreeButton {
+  background-color: white;
+  padding: 3px;
+  border-radius: 5px;
+  @include commandButton();
+}
+
 .GeneratorContentCommandButtonSection {
   @include commandButtonSection();
 }
